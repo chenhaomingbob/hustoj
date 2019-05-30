@@ -56,15 +56,25 @@
 
 #define OJ_WT0 0
 #define OJ_WT1 1
+// Compiling
 #define OJ_CI 2
+// Running & Judging
 #define OJ_RI 3
+// Accepted
 #define OJ_AC 4
+// Presentation Error
 #define OJ_PE 5
+// Wrong Answer
 #define OJ_WA 6
+// Time Limit Exceeded
 #define OJ_TL 7
+// Memory Limit Exceeded
 #define OJ_ML 8
+// Output Limit Exceeded
 #define OJ_OL 9
+// 运行出错
 #define OJ_RE 10
+// 编译出错
 #define OJ_CE 11
 #define OJ_CO 12
 #define OJ_TR 13
@@ -1117,6 +1127,7 @@ void update_problem(int pid,int cid) {
 #endif
 	}
 }
+// TODO 这是？
 void umount(char *work_dir)
 {
 	execute_cmd("/bin/umount -f %s/proc 2>/dev/null", work_dir);
@@ -1267,6 +1278,7 @@ int compile(int lang, char *work_dir)
 		switch (lang)
 		{
 		case 0:
+		    // int execvp(const char* file, const char* argv[]); https://blog.csdn.net/u011857683/article/details/81160059
 			execvp(CP_C[0], (char *const *)CP_C);
 			break;
 		case 1:
@@ -1418,6 +1430,7 @@ void _get_solution_mysql(int solution_id, char *work_dir, int lang)
 	sprintf(src_pth, "Main.%s", lang_ext[lang]);
 	if (DEBUG)
 		printf("Main=%s", src_pth);
+	// 把源码字符串写入文件
 	FILE *fp_src = fopen(src_pth, "we");
 	fprintf(fp_src, "%s", row[0]);
 	if (res != NULL)
@@ -1463,10 +1476,12 @@ void get_solution(int solution_id, char *work_dir, int lang)
 	if(lang == 6 ){	
 		py2 = execute_cmd("/bin/grep 'python2' %s/Main.py > /dev/null", work_dir);
 	}
+	// 使judge有该文件的权限
 	execute_cmd("chown judge %s/%s", work_dir, src_pth);
 }
 
 #ifdef _mysql_h
+// TODO 不知道这个是啥
 void _get_custominput_mysql(int solution_id, char *work_dir)
 {
 	char sql[BUFFER_SIZE], src_pth[BUFFER_SIZE];
@@ -2678,7 +2693,7 @@ void init_parameters(int argc, char **argv, int &solution_id,
 		strcpy(oj_home, "/home/judge");
 
 	chdir(oj_home); // change the dir// init our work
-
+    // atoi 字符串转换成整型数
 	solution_id = atoi(argv[1]);
 	runner_id = atoi(argv[2]);
 }
@@ -2742,7 +2757,8 @@ int count_in_files(char *dirpath)
 
 	return ret;
 }
-
+// 获取测试文件
+// TODO 百分百要修改这个
 int get_test_file(char *work_dir, int p_id)
 {
 	char filename[BUFFER_SIZE];
@@ -2752,6 +2768,7 @@ int get_test_file(char *work_dir, int p_id)
 	const char *cmd =
 		" wget --post-data=\"gettestdatalist=1&time=1&pid=%d\" --load-cookies=cookie --save-cookies=cookie --keep-session-cookies -q -O - \"%s/admin/problem_judge.php\"";
 	FILE *fjobs = read_cmd_output(cmd, p_id, http_baseurl);
+	// 获取测试数据的列表
 	while (fgets(filename, BUFFER_SIZE - 1, fjobs) != NULL)
 	{
 
@@ -2839,9 +2856,13 @@ int main(int argc, char **argv)
 	int p_id, time_lmt, mem_lmt, lang, isspj, sim, sim_s_id, max_case_time = 0,cid=0;
 	char time_space_table[BUFFER_SIZE*100];
 	int time_space_index=0;
-
+    // Judged那边的调用  ./usr/bin/judge_client /user/bin/judge_client runidstr buf(clientid) oj_home
+    // solution_id=runid
+    // runner_id=clientid
+    // argc =4
 	init_parameters(argc, argv, solution_id, runner_id);
 
+	// 这个judge_client也要配置数据库？？？？？？？
 	init_mysql_conf();
 
 #ifdef _mysql_h
@@ -2851,6 +2872,7 @@ int main(int argc, char **argv)
 	}
 #endif
 	//set work directory to start running & judging
+	// work_dir=oj_home/run+runner_id/
 	sprintf(work_dir, "%s/run%s/", oj_home, argv[2]);
 
 	clean_workdir(work_dir);
@@ -2910,6 +2932,7 @@ int main(int argc, char **argv)
 	Compile_OK = compile(lang, work_dir);
 	if (Compile_OK != 0)
 	{
+	    // 编译出错了 哈哈
 		addceinfo(solution_id);
 		update_solution(solution_id, OJ_CE, 0, 0, 0, 0, 0.0);
 		if(!turbo_mode)update_user(user_id);
@@ -2925,7 +2948,9 @@ int main(int argc, char **argv)
 	else
 	{
 		if (!turbo_mode)
+		    // 更新 用户提交为"正在运行和判断"
 			update_solution(solution_id, OJ_RI, 0, 0, 0, 0, 0.0);
+
 		umount(work_dir);
 	}
 	//exit(0);
@@ -2937,10 +2962,12 @@ int main(int argc, char **argv)
 	sprintf(fullpath, "%s/data/%d", oj_home, p_id); // the fullpath of data dir
 
 	// open DIRs
+	// DIR 和 dirent https://blog.csdn.net/zhuyi2654715/article/details/7605051
 	DIR *dp;
 	dirent *dirp;
 	// using http to get remote test data files
 	if (p_id > 0 && http_judge && http_download)
+	    // 创建测试点文件
 		get_test_file(work_dir, p_id);
 	if (p_id > 0 && (dp = opendir(fullpath)) == NULL)
 	{
@@ -2998,10 +3025,12 @@ int main(int argc, char **argv)
 
 		if (pidApp == 0)
 		{
+		    // 子进程跑
 			run_solution(lang, work_dir, time_lmt, usedtime, mem_lmt);
 		}
 		else
 		{
+		    // 父进程监视
 			watch_solution(pidApp, infile, ACflg, isspj, userfile, outfile,
 						   solution_id, lang, topmemory, mem_lmt, usedtime, time_lmt,
 						   p_id, PEflg, work_dir);
