@@ -82,12 +82,13 @@
  http://code.google.com/p/zoj/source/browse/trunk/judge_client/client/tracer.cc?spec=svn367&r=367#39
  */
 #ifdef __arm__
-struct user_regs_struct {
-        long uregs[18];
+struct user_regs_struct
+{
+	long uregs[18];
 };
 
-#define ARM_r7          uregs[7]
-#define ARM_ORIG_r0     uregs[17]
+#define ARM_r7 uregs[7]
+#define ARM_ORIG_r0 uregs[17]
 
 #define REG_SYSCALL ARM_r7
 
@@ -95,10 +96,10 @@ struct user_regs_struct {
 
 #ifdef __mips__
 typedef unsigned long long uint64_t;
-struct user_regs_struct{
-        uint64_t uregs[38];
+struct user_regs_struct
+{
+	uint64_t uregs[38];
 };
-
 
 #define REG_V0 2
 #define REG_A0 4
@@ -122,8 +123,6 @@ struct user_regs_struct{
 #define REG_ARG1 rsi
 
 #endif
-
-
 
 static int DEBUG = 0;
 static char host_name[BUFFER_SIZE];
@@ -163,7 +162,7 @@ static int turbo_mode = 0;
 static const char *tbname = "solution";
 //static int sleep_tmp;
 
-static int py2=1; // caution: py2=1 means default using py3
+static int py2 = 1; // caution: py2=1 means default using py3
 
 #define ZOJ_COM
 
@@ -172,7 +171,7 @@ MYSQL *conn;
 #endif
 
 static char lang_ext[19][8] = {"c", "cc", "pas", "java", "rb", "sh", "py",
-							   "php", "pl", "cs", "m", "bas", "scm", "c", "cc", "lua", "js", "go","sql"};
+							   "php", "pl", "cs", "m", "bas", "scm", "c", "cc", "lua", "js", "go", "sql"};
 //static char buf[BUFFER_SIZE];
 int data_list_has(char *file)
 {
@@ -226,6 +225,7 @@ void write_log(const char *_fmt, ...)
 	va_start(ap, _fmt);
 	//l =
 	vsprintf(buffer, fmt, ap);
+
 	fprintf(fp, "%s\n", buffer);
 	if (DEBUG)
 		printf("%s\n", buffer);
@@ -458,14 +458,16 @@ void init_mysql_conf()
 		}
 		//fclose(fp);
 	}
-//	fclose(fp);
-	
- 	if(strcmp(http_username,"IP")==0){
-                  FILE * fjobs = read_cmd_output("ifconfig|grep 'inet'|awk -F: '{printf $2}'|awk  '{printf $1}'");
-                  fscanf(fjobs, "%s", http_username);
-                  pclose(fjobs);
-        }
-	if(turbo_mode==2) tbname="solution2";
+	//	fclose(fp);
+
+	if (strcmp(http_username, "IP") == 0)
+	{
+		FILE *fjobs = read_cmd_output("ifconfig|grep 'inet'|awk -F: '{printf $2}'|awk  '{printf $1}'");
+		fscanf(fjobs, "%s", http_username);
+		pclose(fjobs);
+	}
+	if (turbo_mode == 2)
+		tbname = "solution2";
 }
 
 int isInFile(const char fname[])
@@ -621,7 +623,8 @@ int compare_zoj(const char *file1, const char *file2)
 					{
 						break;
 					}
-					if (c1 != c2) {
+					if (c1 != c2)
+					{
 						// Consecutive non-space characters should be all exactly the ifconfig|grep 'inet'|awk -F: '{printf $2}'|awk  '{printf $1}'same
 						ret = OJ_WA;
 						goto end;
@@ -760,15 +763,18 @@ void _update_solution_mysql(int solution_id, int result, int time, int memory,
 	char sql[BUFFER_SIZE];
 	char judger[BUFFER_SIZE];
 	mysql_real_escape_string(conn, judger, http_username, strlen(http_username));
-	
-	if (oi_mode) {
+
+	if (oi_mode)
+	{
 		sprintf(sql,
 				"UPDATE %s SET result=%d,time=%d,memory=%d,pass_rate=%f,judger='%s',judgetime=now() WHERE solution_id=%d ",
-					tbname,	    result, time,   memory,   pass_rate,  judger, solution_id);
-	} else {
+				tbname, result, time, memory, pass_rate, judger, solution_id);
+	}
+	else
+	{
 		sprintf(sql,
 				"UPDATE %s SET result=%d,time=%d,memory=%d,judger='%s',judgetime=now() WHERE solution_id=%d ",
-					tbname,     result, time, memory,judger, solution_id);
+				tbname, result, time, memory, judger, solution_id);
 	}
 	//      printf("sql= %s\n",sql);
 	if (mysql_real_query(conn, sql, strlen(sql)))
@@ -900,7 +906,7 @@ void _addceinfo_http(int solution_id)
 		if (cend - ceinfo > 40000)
 			break;
 	}
-	*cend='\0';
+	*cend = '\0';
 	fclose(fp);
 	ceinfo_encode = url_encode(ceinfo);
 	FILE *ce = fopen("ce.post", "we");
@@ -1075,55 +1081,61 @@ void update_user(char *user_id)
 	}
 }
 
-void _update_problem_http(int pid,int cid) {
-	const char * cmd =
-			" wget --post-data=\"updateproblem=1&pid=%d\" --load-cookies=cookie --save-cookies=cookie --keep-session-cookies -q -O - \"%s/admin/problem_judge.php\"";
-	FILE * fjobs = read_cmd_output(cmd, pid, http_baseurl);
+void _update_problem_http(int pid, int cid)
+{
+	const char *cmd =
+		" wget --post-data=\"updateproblem=1&pid=%d\" --load-cookies=cookie --save-cookies=cookie --keep-session-cookies -q -O - \"%s/admin/problem_judge.php\"";
+	FILE *fjobs = read_cmd_output(cmd, pid, http_baseurl);
 	//fscanf(fjobs,"%d",&ret);
 	pclose(fjobs);
 }
 
 #ifdef _mysql_h
-void _update_problem_mysql(int p_id,int cid) {
+void _update_problem_mysql(int p_id, int cid)
+{
 	char sql[BUFFER_SIZE];
-	if(cid>0){
+	if (cid > 0)
+	{
 		sprintf(sql,
-			"UPDATE `contest_problem` SET `c_accepted`=(SELECT count(*) FROM `solution` WHERE `problem_id`=%d AND `result`=4 and contest_id=%d) WHERE `problem_id`=%d and contest_id=%d",
-			p_id,cid, p_id,cid);
-		printf("sql:[%s]\n",sql);
+				"UPDATE `contest_problem` SET `c_accepted`=(SELECT count(*) FROM `solution` WHERE `problem_id`=%d AND `result`=4 and contest_id=%d) WHERE `problem_id`=%d and contest_id=%d",
+				p_id, cid, p_id, cid);
+		printf("sql:[%s]\n", sql);
 		if (mysql_real_query(conn, sql, strlen(sql)))
 			write_log(mysql_error(conn));
-
 	}
 
-		sprintf(sql,
+	sprintf(sql,
 			"UPDATE `problem` SET `accepted`=(SELECT count(*) FROM `solution` WHERE `problem_id`=%d AND `result`=4) WHERE `problem_id`=%d",
 			p_id, p_id);
-		printf("sql:[%s]\n",sql);
+	printf("sql:[%s]\n", sql);
 	if (mysql_real_query(conn, sql, strlen(sql)))
 		write_log(mysql_error(conn));
-	if(cid>0){
+	if (cid > 0)
+	{
 		sprintf(sql,
-			"UPDATE `contest_problem` SET `c_submit`=(SELECT count(*) FROM `solution` WHERE `problem_id`=%d AND  contest_id=%d) WHERE `problem_id`=%d and contest_id=%d",
-			p_id,cid, p_id,cid);
+				"UPDATE `contest_problem` SET `c_submit`=(SELECT count(*) FROM `solution` WHERE `problem_id`=%d AND  contest_id=%d) WHERE `problem_id`=%d and contest_id=%d",
+				p_id, cid, p_id, cid);
 		if (mysql_real_query(conn, sql, strlen(sql)))
 			write_log(mysql_error(conn));
 	}
-		sprintf(sql,
+	sprintf(sql,
 			"UPDATE `problem` SET `submit`=(SELECT count(*) FROM `solution` WHERE `problem_id`=%d) WHERE `problem_id`=%d",
 			p_id, p_id);
 
-	
 	if (mysql_real_query(conn, sql, strlen(sql)))
 		write_log(mysql_error(conn));
 }
 #endif
-void update_problem(int pid,int cid) {
-	if (http_judge) {
-		_update_problem_http(pid,cid);
-	} else {
+void update_problem(int pid, int cid)
+{
+	if (http_judge)
+	{
+		_update_problem_http(pid, cid);
+	}
+	else
+	{
 #ifdef _mysql_h
-		_update_problem_mysql(pid,cid);
+		_update_problem_mysql(pid, cid);
 #endif
 	}
 }
@@ -1278,7 +1290,7 @@ int compile(int lang, char *work_dir)
 		switch (lang)
 		{
 		case 0:
-		    // int execvp(const char* file, const char* argv[]); https://blog.csdn.net/u011857683/article/details/81160059
+			// int execvp(const char* file, const char* argv[]); https://blog.csdn.net/u011857683/article/details/81160059
 			execvp(CP_C[0], (char *const *)CP_C);
 			break;
 		case 1:
@@ -1473,7 +1485,8 @@ void get_solution(int solution_id, char *work_dir, int lang)
 		_get_solution_mysql(solution_id, work_dir, lang);
 #endif
 	}
-	if(lang == 6 ){	
+	if (lang == 6)
+	{
 		py2 = execute_cmd("/bin/grep 'python2' %s/Main.py > /dev/null", work_dir);
 	}
 	// 使judge有该文件的权限
@@ -1539,8 +1552,9 @@ void get_custominput(int solution_id, char *work_dir)
 }
 
 #ifdef _mysql_h
-void _get_solution_info_mysql(int solution_id, int & p_id, char * user_id,
-		int & lang,int &cid) {
+void _get_solution_info_mysql(int solution_id, int &p_id, char *user_id,
+							  int &lang, int &cid)
+{
 
 	MYSQL_RES *res;
 	MYSQL_ROW row;
@@ -1572,17 +1586,21 @@ void _get_solution_info_mysql(int solution_id, int & p_id, char * user_id,
 	p_id = atoi(row[0]);
 	strcpy(user_id, row[1]);
 	lang = atoi(row[2]);
-	if(row[3]==NULL) cid=0;
-	else cid = atoi(row[3]);
-	printf("cid:%d\n",cid);
-	if(res!=NULL) {
-		mysql_free_result(res);                         // free the memory
-		res=NULL;
+	if (row[3] == NULL)
+		cid = 0;
+	else
+		cid = atoi(row[3]);
+	printf("cid:%d\n", cid);
+	if (res != NULL)
+	{
+		mysql_free_result(res); // free the memory
+		res = NULL;
 	}
 }
 #endif
-void _get_solution_info_http(int solution_id, int & p_id, char * user_id,
-		int & lang,int & cid) {
+void _get_solution_info_http(int solution_id, int &p_id, char *user_id,
+							 int &lang, int &cid)
+{
 
 	login();
 
@@ -1595,14 +1613,18 @@ void _get_solution_info_http(int solution_id, int & p_id, char * user_id,
 	fscanf(pout, "%d", &cid);
 	pclose(pout);
 }
-void get_solution_info(int solution_id, int & p_id, char * user_id,
-		int & lang,int & cid) {
+void get_solution_info(int solution_id, int &p_id, char *user_id,
+					   int &lang, int &cid)
+{
 
-	if (http_judge) {
-		_get_solution_info_http(solution_id, p_id, user_id, lang,cid);
-	} else {
+	if (http_judge)
+	{
+		_get_solution_info_http(solution_id, p_id, user_id, lang, cid);
+	}
+	else
+	{
 #ifdef _mysql_h
-		_get_solution_info_mysql(solution_id, p_id, user_id, lang,cid);
+		_get_solution_info_mysql(solution_id, p_id, user_id, lang, cid);
 #endif
 	}
 }
@@ -1889,14 +1911,15 @@ void copy_python_runtime(char *work_dir)
 	execute_cmd("mkdir -p %s/etc/abrt", work_dir);
 	execute_cmd("mkdir -p %s/etc/abrt/plugins", work_dir);
 	execute_cmd("cp -a /etc/abrt/plugins/python.conf %s/etc/abrt/plugins/python.conf", work_dir);
-	
+
 	// /usr/share/abrt/conf.d/plugins/python.conf for Centos7
 	execute_cmd("mkdir -p %s/usr/share", work_dir);
 	execute_cmd("mkdir -p %s/usr/share/abrt/", work_dir);
 	execute_cmd("mkdir -p %s/usr/share/abrt/conf.d", work_dir);
 	execute_cmd("mkdir -p %s/usr/share/abrt/conf.d/plugins", work_dir);
 	execute_cmd("cp -a /usr/share/abrt/conf.d/plugins/python.conf %s/usr/share/abrt/conf.d/plugins/python.conf", work_dir);
-	if(!py2){	
+	if (!py2)
+	{
 		execute_cmd("cp /usr/bin/python2* %s/", work_dir);
 #if (defined __i386) || (defined __arm__) || (defined __x86_64__)
 		execute_cmd("cp -a /usr/lib/python2* %s/usr/lib/", work_dir);
@@ -1904,7 +1927,9 @@ void copy_python_runtime(char *work_dir)
 #if (defined __mips__)
 		execute_cmd("cp -a /usr/lib64/python2* %s/usr/lib64/", work_dir);
 #endif
-	}else{
+	}
+	else
+	{
 		execute_cmd("cp /usr/bin/python3* %s/", work_dir);
 #if (defined __i386) || (defined __arm__) || (defined __x86_64__)
 		execute_cmd("cp -a /usr/lib/python3* %s/usr/lib/", work_dir);
@@ -1922,7 +1947,6 @@ void copy_python_runtime(char *work_dir)
 	execute_cmd("/bin/cp -a /lib64/libutil-2.27.so %s/lib64/", work_dir);
 	execute_cmd("/bin/cp -a /lib64/libc-2.27.so %s/lib64/", work_dir);
 	execute_cmd("/bin/cp -a /lib64/libm-2.27.so %s/lib64/", work_dir);
-
 
 #endif
 	execute_cmd("cp -a /usr/lib64/libpython* %s/usr/lib64/", work_dir);
@@ -2117,11 +2141,14 @@ void run_solution(int &lang, char *work_dir, int &time_lmt, int &usedtime,
 	// now the user is "judger"
 	chdir(work_dir);
 	// open the files
-	if(lang==18){ 
-		execute_cmd("/usr/bin/sqlite3 %s/data.db < %s/data.in", work_dir,work_dir);
+	if (lang == 18)
+	{
+		execute_cmd("/usr/bin/sqlite3 %s/data.db < %s/data.in", work_dir, work_dir);
 		execute_cmd("/bin/chown judge %s/data.db", work_dir);
 		freopen("Main.sql", "r", stdin);
-	}else{
+	}
+	else
+	{
 		freopen("data.in", "r", stdin);
 	}
 	freopen("user.out", "w", stdout);
@@ -2208,9 +2235,9 @@ void run_solution(int &lang, char *work_dir, int &time_lmt, int &usedtime,
 		sprintf(java_xmx, "-Xmx%dM", mem_lmt);
 		//sprintf(java_xmx, "-XX:MaxPermSize=%dM", mem_lmt);
 
-		execl("/usr/bin/java", "/usr/bin/java",java_xmx ,
-				"-Djava.security.manager",
-				"-Djava.security.policy=./java.policy", "Main", (char *) NULL);
+		execl("/usr/bin/java", "/usr/bin/java", java_xmx,
+			  "-Djava.security.manager",
+			  "-Djava.security.policy=./java.policy", "Main", (char *)NULL);
 		break;
 	case 4:
 		//system("/ruby Main.rb<data.in");
@@ -2365,6 +2392,46 @@ int special_judge(char *oj_home, int problem_id, char *infile, char *outfile,
 	}
 	return ret;
 }
+/**
+ * 创建：2019-5-31  陈豪明 add
+ * get now time
+ **/
+void get_now_time(char *now_time)
+{
+	time_t timep;
+	struct tm *p;
+	time(&timep);
+	p = gmtime(&timep);
+	sprintf(now_time, "%d-%02d-%02d %02d:%02d:%02d\n", 1900 + p->tm_year, 1 + p->tm_mon, p->tm_mday, 8 + p->tm_hour, p->tm_min, p->tm_sec);
+	printf("%d-%02d-%02d %02d:%02d:%02d\n", 1900 + p->tm_year, 1 + p->tm_mon, p->tm_mday, 8 + p->tm_hour, p->tm_min, p->tm_sec);
+}
+/**
+ *  创建：2019-5-31  陈豪明 add
+ *  将每个测试点的数据写入数据库
+ **/
+#ifdef _mysql_h
+void add_solution_test_point_record_mysql(int solution_id, int test_point_result, int use_time, int use_memory, char *test_point_input_file, char *test_point_output_file)
+{
+
+	char sql[BUFFER_SIZE];
+	char judger[BUFFER_SIZE];
+	// log的前缀
+	char log_tag[BUFFER_SIZE];
+	// as log file prefix
+	char now_time[20];
+	get_now_time(now_time);
+	strcpy(log_tag, "[add_solution_test_point_record_mysql]");
+	mysql_real_escape_string(conn, judger, http_username, strlen(http_username));
+	sprintf(sql,
+			"INSERT INTO %s ( solution_id,  test_point_input_file, test_point_output_file, test_point_result, test_point_use_time, test_point_use_memory )VALUES( %d, \"%s\", \"%s\", %d, %d, %d )", "solution_test_points", solution_id, test_point_input_file, test_point_output_file, test_point_result, use_time, use_memory);
+	write_log("%s %s,sql:[ %s ]\n", now_time, log_tag, sql);
+	if (mysql_real_query(conn, sql, strlen(sql)))
+	{
+		write_log("%s %s,..update failed! [ %s ]\n", now_time, log_tag, mysql_error(conn));
+	}
+}
+#endif
+
 // usedtime 使用时间 topmemory 应该是运行时最大内存
 void judge_solution(int &ACflg, int &usedtime, int time_lmt, int isspj,
 					int p_id, char *infile, char *outfile, char *userfile, int &PEflg,
@@ -2419,12 +2486,8 @@ void judge_solution(int &ACflg, int &usedtime, int time_lmt, int isspj,
 	{
 		comp_res = fix_python_mis_judge(work_dir, ACflg, topmemory, mem_lmt);
 	}
-	// TODO 记录每个评测点的数据
-    /**
-     * 1.创个表试试
-     * 2.
-     */
-
+	// 记录每个测试点的情况
+	add_solution_test_point_record_mysql(solution_id, ACflg, usedtime, topmemory >> 10, infile, outfile);
 }
 
 int get_page_fault_mem(struct rusage &ruse, pid_t &pidApp)
@@ -2616,9 +2679,10 @@ void watch_solution(pid_t pidApp, char *infile, int &ACflg, int isspj,
 		// check the system calls
 		ptrace(PTRACE_GETREGS, pidApp, NULL, &reg);
 #ifdef __mips__
-//		if(exitcode!=5&&exitcode!=133){
-	//https://github.com/strace/strace/blob/master/linux/mips/syscallent-n32.h#L344
-		   if((unsigned int)reg.REG_SYSCALL<6500){  
+		//		if(exitcode!=5&&exitcode!=133){
+		//https://github.com/strace/strace/blob/master/linux/mips/syscallent-n32.h#L344
+		if ((unsigned int)reg.REG_SYSCALL < 6500)
+		{
 #endif
 			call_id = ((unsigned int)reg.REG_SYSCALL) % call_array_size;
 			if (call_counter[call_id])
@@ -2639,14 +2703,14 @@ void watch_solution(pid_t pidApp, char *infile, int &ACflg, int isspj,
 						"and recompile judge_client. \n"
 						"if you are admin and you don't know what to do ,\n"
 						"chinese explaination can be found on https://zhuanlan.zhihu.com/p/24498599\n",
-						solution_id, call_id,exitcode);
+						solution_id, call_id, exitcode);
 
 				write_log(error);
 				print_runtimeerror(error);
 				ptrace(PTRACE_KILL, pidApp, NULL, NULL);
 			}
 #ifdef __mips__
-		   }
+		}
 //		}
 #endif
 		ptrace(PTRACE_SYSCALL, pidApp, NULL, NULL);
@@ -2701,7 +2765,7 @@ void init_parameters(int argc, char **argv, int &solution_id,
 		strcpy(oj_home, "/home/judge");
 
 	chdir(oj_home); // change the dir// init our work
-    // atoi 字符串转换成整型数
+					// atoi 字符串转换成整型数
 	solution_id = atoi(argv[1]);
 	runner_id = atoi(argv[2]);
 }
@@ -2766,7 +2830,7 @@ int count_in_files(char *dirpath)
 	return ret;
 }
 // 获取测试文件
-// TODO 百分百要修改这个
+// TODO 这里必要修改 
 int get_test_file(char *work_dir, int p_id)
 {
 	char filename[BUFFER_SIZE];
@@ -2861,13 +2925,13 @@ int main(int argc, char **argv)
 	char user_id[BUFFER_SIZE];
 	int solution_id = 1000;
 	int runner_id = 0;
-	int p_id, time_lmt, mem_lmt, lang, isspj, sim, sim_s_id, max_case_time = 0,cid=0;
-	char time_space_table[BUFFER_SIZE*100];
-	int time_space_index=0;
-    // Judged那边的调用  ./usr/bin/judge_client /user/bin/judge_client runidstr buf(clientid) oj_home
-    // solution_id=runid
-    // runner_id=clientid
-    // argc =4
+	int p_id, time_lmt, mem_lmt, lang, isspj, sim, sim_s_id, max_case_time = 0, cid = 0;
+	char time_space_table[BUFFER_SIZE * 100];
+	int time_space_index = 0;
+	// Judged那边的调用  ./usr/bin/judge_client /user/bin/judge_client runidstr buf(clientid) oj_home
+	// solution_id=runid
+	// runner_id=clientid
+	// argc =4
 	init_parameters(argc, argv, solution_id, runner_id);
 
 	// 这个judge_client也要配置数据库？？？？？？？
@@ -2891,7 +2955,7 @@ int main(int argc, char **argv)
 
 	if (http_judge)
 		system("/bin/ln -s ../cookie ./");
-	get_solution_info(solution_id, p_id, user_id, lang,cid);
+	get_solution_info(solution_id, p_id, user_id, lang, cid);
 	//get the limit
 
 	if (p_id == 0)
@@ -2940,11 +3004,13 @@ int main(int argc, char **argv)
 	Compile_OK = compile(lang, work_dir);
 	if (Compile_OK != 0)
 	{
-	    // 编译出错了 哈哈
+		// 编译出错了 哈哈
 		addceinfo(solution_id);
 		update_solution(solution_id, OJ_CE, 0, 0, 0, 0, 0.0);
-		if(!turbo_mode)update_user(user_id);
-		if(!turbo_mode)update_problem(p_id,cid);
+		if (!turbo_mode)
+			update_user(user_id);
+		if (!turbo_mode)
+			update_problem(p_id, cid);
 #ifdef _mysql_h
 		if (!http_judge)
 			mysql_close(conn);
@@ -2956,7 +3022,7 @@ int main(int argc, char **argv)
 	else
 	{
 		if (!turbo_mode)
-		    // 更新 用户提交为"正在运行和判断"
+			// 更新 用户提交为"正在运行和判断"
 			update_solution(solution_id, OJ_RI, 0, 0, 0, 0, 0.0);
 
 		umount(work_dir);
@@ -2975,7 +3041,7 @@ int main(int argc, char **argv)
 	dirent *dirp;
 	// using http to get remote test data files
 	if (p_id > 0 && http_judge && http_download)
-	    // 创建测试点文件
+		// 创建测试点文件
 		get_test_file(work_dir, p_id);
 	if (p_id > 0 && (dp = opendir(fullpath)) == NULL)
 	{
@@ -3033,12 +3099,12 @@ int main(int argc, char **argv)
 
 		if (pidApp == 0)
 		{
-		    // 子进程跑
+			// 子进程跑
 			run_solution(lang, work_dir, time_lmt, usedtime, mem_lmt);
 		}
 		else
 		{
-		    // 父进程监视
+			// 父进程监视
 			watch_solution(pidApp, infile, ACflg, isspj, userfile, outfile,
 						   solution_id, lang, topmemory, mem_lmt, usedtime, time_lmt,
 						   p_id, PEflg, work_dir);
@@ -3064,7 +3130,7 @@ int main(int argc, char **argv)
 
 	for (; (oi_mode || ACflg == OJ_AC || ACflg == OJ_PE) && (dirp = readdir(dp)) != NULL;)
 	{
-	    // read in 文件  如果是.in 结尾的文件，返回 .前面的
+		// read in 文件  如果是.in 结尾的文件，返回 .前面的
 		namelen = isInFile(dirp->d_name); // check if the file is *.in or not
 		if (namelen == 0)
 			continue;
@@ -3100,9 +3166,9 @@ int main(int argc, char **argv)
 			watch_solution(pidApp, infile, ACflg, isspj, userfile, outfile,
 						   solution_id, lang, topmemory, mem_lmt, usedtime, time_lmt,
 						   p_id, PEflg, work_dir);
-			printf("%s: mem=%d time=%d\n",infile+strlen(oj_home)+5,topmemory,usedtime);	
-			time_space_index+=sprintf(time_space_table+time_space_index,"%s: mem=%dk time=%dms\n",infile+strlen(oj_home)+5,topmemory/1024,usedtime);	
-
+			printf("%s: mem=%d time=%d\n", infile + strlen(oj_home) + 5, topmemory, usedtime);
+			time_space_index += sprintf(time_space_table + time_space_index, "%s: mem=%dk time=%dms\n", infile + strlen(oj_home) + 5, topmemory / 1024, usedtime);
+			// 这里判断每个测试点
 			judge_solution(ACflg, usedtime, time_lmt, isspj, p_id, infile,
 						   outfile, userfile, PEflg, lang, work_dir, topmemory,
 						   mem_lmt, solution_id, num_of_test);
@@ -3128,7 +3194,7 @@ int main(int argc, char **argv)
 			ACflg = OJ_AC;
 		}
 	}
-	 // ————————
+	// ————————
 
 	if (ACflg == OJ_AC && PEflg == OJ_PE)
 		ACflg = OJ_PE;
@@ -3170,14 +3236,19 @@ int main(int argc, char **argv)
 		update_solution(solution_id, ACflg, usedtime, topmemory >> 10, sim,
 						sim_s_id, 0);
 	}
-	FILE *df=fopen("diff.out","a");
-	fprintf(df,"time_space_table:\n%s\n",time_space_table);
+	FILE *df = fopen("diff.out", "a");
+	fprintf(df, "time_space_table:\n%s\n", time_space_table);
 	fclose(df);
-	if(DEBUG) printf("ACflg:%d\n",ACflg);
-	if(DEBUG) printf("finalACflg:%d\n",finalACflg);
-	if(ACflg != 10 && finalACflg!= 10 ) adddiffinfo(solution_id);
-	if(!turbo_mode)update_user(user_id);
-	if(!turbo_mode)update_problem(p_id,cid);
+	if (DEBUG)
+		printf("ACflg:%d\n", ACflg);
+	if (DEBUG)
+		printf("finalACflg:%d\n", finalACflg);
+	if (ACflg != 10 && finalACflg != 10)
+		adddiffinfo(solution_id);
+	if (!turbo_mode)
+		update_user(user_id);
+	if (!turbo_mode)
+		update_problem(p_id, cid);
 	clean_workdir(work_dir);
 
 	if (DEBUG)
