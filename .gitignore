@@ -1,3 +1,7 @@
 trunk/core/sim/*
 trunk/web/discuss3/*
 .DS_Store
+trunk/core/judge_client/judge_client.o
+trunk/core/judge_client/judge_client
+trunk/core/judged/judged.o
+trunk/core/judged/judged
