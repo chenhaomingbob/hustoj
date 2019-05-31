@@ -2365,6 +2365,7 @@ int special_judge(char *oj_home, int problem_id, char *infile, char *outfile,
 	}
 	return ret;
 }
+// usedtime 使用时间 topmemory 应该是运行时最大内存
 void judge_solution(int &ACflg, int &usedtime, int time_lmt, int isspj,
 					int p_id, char *infile, char *outfile, char *userfile, int &PEflg,
 					int lang, char *work_dir, int &topmemory, int mem_lmt,
@@ -2379,6 +2380,7 @@ void judge_solution(int &ACflg, int &usedtime, int time_lmt, int isspj,
 	if (topmemory > mem_lmt * STD_MB)
 		ACflg = OJ_ML; //issues79
 	// compare
+	// 这个AC只是成功跑出结果的AC 哈哈 。
 	if (ACflg == OJ_AC)
 	{
 		if (isspj)
@@ -2417,6 +2419,12 @@ void judge_solution(int &ACflg, int &usedtime, int time_lmt, int isspj,
 	{
 		comp_res = fix_python_mis_judge(work_dir, ACflg, topmemory, mem_lmt);
 	}
+	// TODO 记录每个评测点的数据
+    /**
+     * 1.创个表试试
+     * 2.
+     */
+
 }
 
 int get_page_fault_mem(struct rusage &ruse, pid_t &pidApp)
@@ -3056,7 +3064,7 @@ int main(int argc, char **argv)
 
 	for (; (oi_mode || ACflg == OJ_AC || ACflg == OJ_PE) && (dirp = readdir(dp)) != NULL;)
 	{
-
+	    // read in 文件  如果是.in 结尾的文件，返回 .前面的
 		namelen = isInFile(dirp->d_name); // check if the file is *.in or not
 		if (namelen == 0)
 			continue;
@@ -3120,6 +3128,8 @@ int main(int argc, char **argv)
 			ACflg = OJ_AC;
 		}
 	}
+	 // ————————
+
 	if (ACflg == OJ_AC && PEflg == OJ_PE)
 		ACflg = OJ_PE;
 	if (sim_enable && ACflg == OJ_AC && (!oi_mode || finalACflg == OJ_AC))
