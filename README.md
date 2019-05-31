@@ -8,7 +8,7 @@
 ### 系统环境
 -  ubuntu16  
 -  mysql5.7
--  php  
+-  ~~php~~(干掉->Java Java天下第一)
 -  nginx
 
 ### 2019-5-31 当前进度
