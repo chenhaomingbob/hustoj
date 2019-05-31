@@ -67,8 +67,8 @@
                 <!--在控制台显示执行的数据哭操作语句（格式）-->
                 <prop key="hibernate.format_sql">${hibernate.format_sql}</prop>
                 <prop key="use_sql_comments">${hibernate.use_sql_comments}</prop>
-                <prop key="hibernate.connection.url">jdbc:mysql://122.112.235.204:3306/learning_sys</prop>
-                <prop key="hibernate.connection.driver_class">com.mysql.jdbc.Driver</prop>
+                <prop key="hibernate.connection.url">jdbc:mysql://192.168.3.131:3306/jol</prop>
+                <prop key="hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</prop>
             </props>
         </property>
     </bean>
