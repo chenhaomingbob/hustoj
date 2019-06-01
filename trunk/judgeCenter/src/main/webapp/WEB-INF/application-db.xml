@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+    <context:property-placeholder location="classpath:config.properties"/>
+    <!-- DataBase based on hibernate  连接hustoj的datasoure-->
+    <bean id="dataSourceHUSTOJ" class="com.alibaba.druid.pool.DruidDataSource"
+          init-method="init" destroy-method="close">
+        <property name="driverClassName" value="${jdbc.hustoj.driverClassName}"/>
+        <property name="url" value="${jdbc.hustoj.url}"/>
+        <property name="username" value="${jdbc.hustoj.username}"/>
+        <property name="password" value="${jdbc.hustoj.password}"/>
+        <property name="initialSize" value="${jdbc.hustoj.initialSize}"/>
+        <property name="maxActive" value="${jdbc.hustoj.maxActive}"/>
+        <property name="minIdle" value="${jdbc.hustoj.minIdle}"/>
+        <property name="maxWait" value="${jdbc.hustoj.maxWait}"/>
+        <property name="timeBetweenEvictionRunsMillis" value="${jdbc.hustoj.timeBetweenEvictionRunsMillis}"/>
+        <property name="minEvictableIdleTimeMillis" value="${jdbc.hustoj.minEvictableIdleTimeMillis}"/>
+        <property name="removeAbandoned" value="${jdbc.hustoj.removeAbandoned}"/>
+        <property name="removeAbandonedTimeout" value="${jdbc.hustoj.removeAbandonedTimeout}"/>
+        <property name="validationQuery" value="SELECT 1"/>
+        <property name="testWhileIdle" value="true"/>
+        <property name="testOnBorrow" value="true"/>
+        <property name="testOnReturn" value="true"/>
+    </bean>
+    <!--配置session工厂-->
+    <bean id="sessionFactoryHUSTOJ" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+        <property name="dataSource" ref="dataSourceHUSTOJ"/>
+        <property name="packagesToScan">
+            <list>
+                <value>com.zjgsu.entity.hustoj</value>
+            </list>
+        </property>
+        <property name="hibernateProperties">
+            <props>
+                <!--指定数据库方言-->
+                <prop key="hibernate.dialect">${hibernate.dialect}</prop>
+                <!--在控制台显示执行的数据库操作语句-->
+                <prop key="hibernate.show_sql">${hibernate.show_sql}</prop>
+                <!--在控制台显示执行的数据哭操作语句（格式）-->
+                <prop key="hibernate.format_sql">${hibernate.format_sql}</prop>
+                <prop key="use_sql_comments">${hibernate.use_sql_comments}</prop>
+            </props>
+        </property>
+    </bean>
+    <!-- 事物管理器配置  -->
+    <bean id="transactionManagerHUSTOJ" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+        <property name="sessionFactory" ref="sessionFactoryHUSTOJ"/>
+    </bean>
+    <tx:annotation-driven transaction-manager="transactionManagerHUSTOJ"/>
+    <!-- DataBase based on hibernate  连接zjgsu 的datasoure-->
+    <bean id="dataSourceZJGSU" class="com.alibaba.druid.pool.DruidDataSource"
+          init-method="init" destroy-method="close">
+        <property name="driverClassName" value="${jdbc.zjgsu.driverClassName}"/>
+        <property name="url" value="${jdbc.zjgsu.url}"/>
+        <property name="username" value="${jdbc.zjgsu.username}"/>
+        <property name="password" value="${jdbc.zjgsu.password}"/>
+        <property name="initialSize" value="${jdbc.zjgsu.initialSize}"/>
+        <property name="maxActive" value="${jdbc.zjgsu.maxActive}"/>
+        <property name="minIdle" value="${jdbc.zjgsu.minIdle}"/>
+        <property name="maxWait" value="${jdbc.zjgsu.maxWait}"/>
+        <property name="timeBetweenEvictionRunsMillis" value="${jdbc.zjgsu.timeBetweenEvictionRunsMillis}"/>
+        <property name="minEvictableIdleTimeMillis" value="${jdbc.zjgsu.minEvictableIdleTimeMillis}"/>
+        <property name="removeAbandoned" value="${jdbc.zjgsu.removeAbandoned}"/>
+        <property name="removeAbandonedTimeout" value="${jdbc.zjgsu.removeAbandonedTimeout}"/>
+        <property name="validationQuery" value="SELECT 1"/>
+        <property name="testWhileIdle" value="true"/>
+        <property name="testOnBorrow" value="true"/>
+        <property name="testOnReturn" value="true"/>
+    </bean>
+    <!--配置session工厂-->
+    <bean id="sessionFactoryZJGSU" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+        <property name="dataSource" ref="dataSourceZJGSU"/>
+        <property name="packagesToScan">
+            <list>
+                <value>com.zjgsu.entity.zjgsu</value>
+            </list>
+        </property>
+        <property name="hibernateProperties">
+            <props>
+                <!--指定数据库方言-->
+                <prop key="hibernate.dialect">${hibernate.dialect}</prop>
+                <!--在控制台显示执行的数据库操作语句-->
+                <prop key="hibernate.show_sql">${hibernate.show_sql}</prop>
+                <!--在控制台显示执行的数据哭操作语句（格式）-->
+                <prop key="hibernate.format_sql">${hibernate.format_sql}</prop>
+                <prop key="use_sql_comments">${hibernate.use_sql_comments}</prop>
+            </props>
+        </property>
+    </bean>
+    <!-- 事物管理器配置  -->
+    <bean id="transactionManagerZJGSU" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+        <property name="sessionFactory" ref="sessionFactoryZJGSU"/>
+    </bean>
+    <tx:annotation-driven transaction-manager="transactionManagerZJGSU"/>
+</beans>

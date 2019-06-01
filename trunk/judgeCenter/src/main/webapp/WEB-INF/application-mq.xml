@@ -1,0 +1,38 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+
+    <!-- Message service -->
+    <bean id="amqConnectionFactory" class="org.apache.activemq.ActiveMQConnectionFactory">
+        <constructor-arg index="0" value="${jms.broker.url}"/>
+    </bean>
+    <bean id="connectionFactory"
+          class="org.springframework.jms.connection.CachingConnectionFactory">
+        <constructor-arg ref="amqConnectionFactory"/>
+    </bean>
+    <bean id="defaultDestination" class="org.apache.activemq.command.ActiveMQQueue">
+        <constructor-arg index="0" value="vojJudgeResultQueue"/>
+    </bean>
+    <bean id="jmsTemplate" class="org.springframework.jms.core.JmsTemplate">
+        <property name="connectionFactory" ref="connectionFactory"/>
+        <property name="defaultDestination" ref="defaultDestination"/>
+    </bean>
+    <!--	使用spring进行配置监听 原SimpleMessageListenerContainer  处于多线程监听的考虑 改为了 DefaultMessageListenerContainer （一个监听器开启多线程监听）-->
+    <bean class="org.springframework.jms.listener.DefaultMessageListenerContainer">
+        <property name="connectionFactory" ref="connectionFactory"/>
+        <property name="destinationName" value="vojSubmissionTaskQueue"/>
+        <property name="messageListener" ref="messageReceiver"/>
+        <!-- 设置固定的线程数 -->
+        <property name="concurrentConsumers" value="3"/>
+        <!-- 设置动态的线程数 -->
+        <property name="concurrency" value="2-5"/>
+        <!-- 设置最大的线程数 -->
+        <property name="maxConcurrentConsumers" value="8"/>
+        <property name="receiveTimeout" value="60"/>
+    </bean>
+    <bean id="messageSender" class="com.zjgsu.messager.MessageReceiver"/>
+    <bean id="messageReceiver" class="com.zjgsu.messager.MessageReceiver"/>
+
+</beans>
