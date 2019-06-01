@@ -16,6 +16,9 @@ public class SolutionEntity {
     private String userId;
     private int time;
     private int memory;
+    /**
+     * 录入事件
+     */
     private Timestamp inDate;
     private short result;
     private int language;

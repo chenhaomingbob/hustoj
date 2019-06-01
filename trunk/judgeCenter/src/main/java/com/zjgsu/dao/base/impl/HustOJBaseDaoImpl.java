@@ -1,11 +1,11 @@
-package com.zjgsu.dao.impl;
+package com.zjgsu.dao.base.impl;
 
 import java.io.Serializable;
 import java.lang.reflect.ParameterizedType;
 import java.math.BigInteger;
 import java.util.List;
 
-import com.zjgsu.dao.BaseDao;
+import com.zjgsu.dao.base.BaseDao;
 import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -13,12 +13,9 @@ import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Criterion;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Projections;
-import org.hibernate.transform.Transformers;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.transaction.annotation.Transactional;
-
-import com.alibaba.fastjson.JSONArray;
-import com.alibaba.fastjson.JSONObject;
 
 /**
  * 通用DAO实现
@@ -27,18 +24,19 @@ import com.alibaba.fastjson.JSONObject;
  */
 @SuppressWarnings({"rawtypes", "unchecked"})
 @Transactional
-public class BaseDaoImpl<T> implements BaseDao<T> {
+public class HustOJBaseDaoImpl<T> implements BaseDao<T> {
     /**
      * hql ： from 后面跟的 类名＋类对象 where 后 用 对象的属性做条件
      * sql： from 后面跟的是表名 where 后 用表中字段做条件
      */
     @Autowired
-    private SessionFactory sessionFactory;
+    @Qualifier("sessionFactoryHUSTOJ")
+    private SessionFactory sessionFactoryHUSTOJ;
 
     private Class<T> clazz;
 
     protected Session getSession() {
-        return sessionFactory.getCurrentSession();
+        return sessionFactoryHUSTOJ.getCurrentSession();
     }
 
     private static final int MAX_LIMIT = 1000;
@@ -47,7 +45,7 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
 
     private static final int GET_RESULT_NUM = 1;
 
-    public BaseDaoImpl() {
+    public HustOJBaseDaoImpl() {
         ParameterizedType parameterizedType = (ParameterizedType) this.getClass().getGenericSuperclass();
         this.clazz = (Class<T>) parameterizedType.getActualTypeArguments()[0];
     }

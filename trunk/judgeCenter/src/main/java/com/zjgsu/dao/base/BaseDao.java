@@ -1,4 +1,4 @@
-package com.zjgsu.dao;
+package com.zjgsu.dao.base;
 
 import java.io.Serializable;
 import java.util.List;
