@@ -1,4 +1,4 @@
-package com.zjgsu.entity;
+package com.zjgsu.entity.hustoj;
 
 import javax.persistence.*;
 
@@ -32,7 +32,7 @@ public class PrivilegeEntity {
     public void setRightstr(String rightstr) {
         this.rightstr = rightstr;
     }
-
+                                
     @Basic
     @Column(name = "defunct")
     public String getDefunct() {

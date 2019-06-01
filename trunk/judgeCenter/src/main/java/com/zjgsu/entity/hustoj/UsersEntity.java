@@ -1,4 +1,4 @@
-package com.zjgsu.entity;
+package com.zjgsu.entity.hustoj;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
