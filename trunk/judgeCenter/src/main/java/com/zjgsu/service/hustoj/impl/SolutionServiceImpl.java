@@ -18,6 +18,7 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import sun.rmi.runtime.Log;
 
 import java.io.File;
 import java.io.IOException;
@@ -127,6 +128,7 @@ public class SolutionServiceImpl implements SolutionService {
                 testFile = new File(outputFilePath);
                 FileUtils.write(testFile, testPointEntity.getOutputContent(), Charset.forName("UTF-8"));
             }
+            Logger.info("创建测试文件,problemId:{},测试点个数:{}", problemId, testPointEntityList.size());
         } catch (IOException e) {
             Logger.error("创建测试文件时失败,problemId:{}", problemId, e);
         }
@@ -140,13 +142,13 @@ public class SolutionServiceImpl implements SolutionService {
      * @return 文件名
      */
     private String generateProblemTestFileName(String problemDataFileDirPath, int number, int type) {
-        StringBuilder stringBuilder = new StringBuilder();
-
+        StringBuilder stringBuilder = new StringBuilder(problemDataFileDirPath).append(JudgeCenterConstant.FILE_SEPARATOR).append(JudgeCenterConstant.PROBLEM_Test_FILE_NAME_PREFIX).append(number);
         if (TestFileInputType == type) {
-            stringBuilder.append(problemDataFileDirPath).append(JudgeCenterConstant.FILE_SEPARATOR).append(JudgeCenterConstant.PROBLEM_INPUT_FILE_NAME_PREFIX).append(number).append(JudgeCenterConstant.PROBLEM_INPUT_FILE_NAME_SUFFIX);
+            stringBuilder.append(JudgeCenterConstant.PROBLEM_INPUT_FILE_NAME_SUFFIX);
         } else if (TestFileOutpuType == type) {
-            stringBuilder.append(problemDataFileDirPath).append(JudgeCenterConstant.FILE_SEPARATOR).append(JudgeCenterConstant.PROBLEM_OUTPUT_FILE_NAME_PREFIX).append(number).append(JudgeCenterConstant.PROBLEM_OUTPUT_FILE_NAME_SUFFIX);
+            stringBuilder.append(JudgeCenterConstant.PROBLEM_OUTPUT_FILE_NAME_SUFFIX);
         }
+
         return stringBuilder.toString();
     }
 

@@ -10,7 +10,7 @@ import java.sql.Timestamp;
 @Entity
 @Table(name = "problem", schema = "jol", catalog = "")
 public class ProblemEntity {
-    private Integer   problemId;
+    private Integer problemId;
     private String title;
     private String description;
     private String input;
@@ -29,8 +29,9 @@ public class ProblemEntity {
     private Integer solved;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "problem_id")
-    public Integer   getProblemId() {
+    public Integer  getProblemId() {
         return problemId;
     }
 

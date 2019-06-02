@@ -1,12 +1,14 @@
 package com.zjgsu.service.zjgsu.impl;
 
 import com.zjgsu.service.zjgsu.JudgeNormalQuestionService;
+import org.springframework.stereotype.Service;
 
 /**
  * 用来判断一般题目 ：填空题、选择题、判断题.
  * @author chm 神魔法
  * @date 2019/6/2 14:02
  */
+@Service
 public class JudgeNormalQuestionServiceImpl implements JudgeNormalQuestionService {
     /**
      * 评判一般填空题

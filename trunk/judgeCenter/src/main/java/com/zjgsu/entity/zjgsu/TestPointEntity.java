@@ -11,7 +11,7 @@ import javax.persistence.*;
 public class TestPointEntity {
     private Integer testPonitId;
     private Integer problemId;
-    private Byte status;
+    private Integer status;
     private String inputContent;
     private String outputContent;
 
@@ -42,11 +42,11 @@ public class TestPointEntity {
 
     @Basic
     @Column(name = "status")
-    public Byte getStatus() {
+    public Integer getStatus() {
         return status;
     }
 
-    public void setStatus(Byte status) {
+    public void setStatus(Integer status) {
         this.status = status;
     }
 

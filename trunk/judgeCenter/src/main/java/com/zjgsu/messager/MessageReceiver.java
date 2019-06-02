@@ -53,11 +53,9 @@ public class MessageReceiver implements MessageListener {
         //  String.format("Received new submission task #%d",submissionId)
         Logger.info("Received new submission task #" + submissionId);
         //TODO
-        judgeService.judgeQuestion(submissionId);
+//        judgeService.judgeQuestion(submissionId);
     }
 
-    @Autowired
-    private JudgeService judgeService;
     /**
      * 日志记录器.
      */
