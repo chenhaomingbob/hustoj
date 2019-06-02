@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import static org.junit.Assert.*;
 
 /**
  * @author chm 神魔法
@@ -18,8 +17,22 @@ import static org.junit.Assert.*;
 public class SolutionServiceImplTest {
     @Autowired
     private SolutionService solutionService;
+
     @Test
-    public void test1() {
-        System.out.println(solutionService);
+    public void testSubmitUserSolution() {
+        int problemId = 1000;
+        String userId = "admin";
+        String ip = "192.168.3.1";
+        int language = 1;
+        String sourceCode = "#include <stdio.h> \n" +
+                "int main() \n" +
+                "{ \n" +
+                "    int a,b; \n" +
+                "    scanf(\"%d %d\",&a, &b); \n" +
+                "    printf(\"%d\\n\",a+b); \n" +
+                "    return 0; \n" +
+                "} ";
+        solutionService.submitUserSolution(problemId, userId, ip, language, sourceCode);
+
     }
 }
