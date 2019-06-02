@@ -9,7 +9,7 @@
 -  ubuntu16  
 -  mysql5.7
 -  ~~php~~(干掉->Java Java天下第一)
--  nginx
+-  ~~nginx~~(tomcat)
 
 ### 至2019-5-31 
 - 数据库中添加了测试点表
