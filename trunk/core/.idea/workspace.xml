@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
+    <generated />
+  </component>
+  <component name="CMakeSettings">
+    <configurations>
+      <configuration PROFILE_NAME="Debug" CONFIG_NAME="Debug" />
+    </configurations>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="36c52b34-10f3-47de-96d3-9b7df9735bfb" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/judge_client/judge_client.cc" beforeDir="false" afterPath="$PROJECT_DIR$/judge_client/judge_client.cc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../judgeCenter/src/main/java/com/zjgsu/dao/base/BaseDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/../judgeCenter/src/main/java/com/zjgsu/dao/base/BaseDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../judgeCenter/src/main/java/com/zjgsu/dao/base/impl/HustOJBaseDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../judgeCenter/src/main/java/com/zjgsu/dao/base/impl/HustOjBaseDaoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../judgeCenter/src/main/java/com/zjgsu/dao/base/impl/ZJGSUBaseDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../judgeCenter/src/main/java/com/zjgsu/dao/base/impl/ZJGSUBaseDaoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../judgeCenter/src/main/java/com/zjgsu/dao/hustoj/impl/ProblemDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../judgeCenter/src/main/java/com/zjgsu/dao/hustoj/impl/ProblemDaoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../judgeCenter/src/main/java/com/zjgsu/dao/hustoj/impl/SolutionDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../judgeCenter/src/main/java/com/zjgsu/dao/hustoj/impl/SolutionDaoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../judgeCenter/src/main/java/com/zjgsu/dao/hustoj/impl/SolutionTestPointsDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../judgeCenter/src/main/java/com/zjgsu/dao/hustoj/impl/SolutionTestPointsDaoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../judgeCenter/src/main/java/com/zjgsu/dao/hustoj/impl/SourceCodeDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../judgeCenter/src/main/java/com/zjgsu/dao/hustoj/impl/SourceCodeDaoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../judgeCenter/src/main/java/com/zjgsu/dao/hustoj/impl/SourceCodeUserDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../judgeCenter/src/main/java/com/zjgsu/dao/hustoj/impl/SourceCodeUserDaoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../judgeCenter/src/main/java/com/zjgsu/dao/hustoj/impl/UsersDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../judgeCenter/src/main/java/com/zjgsu/dao/hustoj/impl/UsersDaoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../judgeCenter/src/main/java/com/zjgsu/entity/hustoj/ProblemEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../judgeCenter/src/main/java/com/zjgsu/entity/hustoj/ProblemEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../judgeCenter/src/main/java/com/zjgsu/entity/hustoj/SolutionEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../judgeCenter/src/main/java/com/zjgsu/entity/hustoj/SolutionEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../judgeCenter/src/main/java/com/zjgsu/entity/hustoj/SolutionTestPointsEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../judgeCenter/src/main/java/com/zjgsu/entity/hustoj/SolutionTestPointsEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../judgeCenter/src/main/java/com/zjgsu/entity/hustoj/SourceCodeEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../judgeCenter/src/main/java/com/zjgsu/entity/hustoj/SourceCodeEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../judgeCenter/src/main/java/com/zjgsu/entity/hustoj/SourceCodeUserEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../judgeCenter/src/main/java/com/zjgsu/entity/hustoj/SourceCodeUserEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../judgeCenter/src/main/java/com/zjgsu/entity/hustoj/UsersEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../judgeCenter/src/main/java/com/zjgsu/entity/hustoj/UsersEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../judgeCenter/src/main/java/com/zjgsu/service/hustoj/SolutionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../judgeCenter/src/main/java/com/zjgsu/service/hustoj/SolutionService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../judgeCenter/src/main/java/com/zjgsu/service/hustoj/impl/SolutionServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../judgeCenter/src/main/java/com/zjgsu/service/hustoj/impl/SolutionServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../judgeCenter/src/main/webapp/WEB-INF/application-db.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../judgeCenter/src/main/webapp/WEB-INF/application-db.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../judgeCenter/src/test/java/com/zjgsu/service/hustoj/impl/SolutionServiceImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../judgeCenter/src/test/java/com/zjgsu/service/hustoj/impl/SolutionServiceImplTest.java" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
+  </component>
+  <component name="FileEditorManager">
+    <splitter split-orientation="horizontal" split-proportion="0.5082167">
+      <split-first>
+        <leaf>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/judge_client/judge_client.cc">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="614">
+                  <caret line="217" column="12" selection-start-line="217" selection-start-column="4" selection-end-line="217" selection-end-column="12" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/judge_client/ncalls.h">
+              <provider selected="true" editor-type-id="text-editor" />
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/judge_client/makefile">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="22">
+                  <caret line="1" column="4" selection-start-line="1" selection-start-column="4" selection-end-line="1" selection-end-column="86" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-first>
+      <split-second>
+        <leaf>
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/judge_client/judge_client.cc">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="250">
+                  <caret line="350" column="1" lean-forward="true" selection-start-line="350" selection-start-column="1" selection-end-line="350" selection-end-column="1" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-second>
+    </splitter>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>va_start</find>
+    </findStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/judge_client/judge_client.cc" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectConfigurationFiles">
+    <option name="files">
+      <list>
+        <option value="$PROJECT_DIR$/.idea/core.iml" />
+        <option value="$PROJECT_DIR$/.idea/misc.xml" />
+        <option value="$PROJECT_DIR$/.idea/vcs.xml" />
+        <option value="$PROJECT_DIR$/.idea/modules.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-2586" />
+    <option name="y" value="324" />
+    <option name="width" value="1942" />
+    <option name="height" value="1090" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="core" type="b2602c69:ProjectViewProjectNode" />
+              <item name="core" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="core" type="b2602c69:ProjectViewProjectNode" />
+              <item name="core" type="462c0819:PsiDirectoryNode" />
+              <item name="judge_client" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="C:/Program Files/Java/jdk1.8.0_201/bin/jvisualvm.exe" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="settings.editor.selected.configurable" value="MavenSettings" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="36c52b34-10f3-47de-96d3-9b7df9735bfb" name="Default Changelist" comment="" />
+      <created>1559385104472</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1559385104472</updated>
+      <workItem from="1559385105657" duration="3211000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="3211000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-3846" y="-6" width="1933" height="1093" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info id="Favorites" side_tool="true" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.123733334" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="Database Changes" />
+      <window_info anchor="bottom" id="Version Control" />
+      <window_info anchor="bottom" id="Terminal" />
+      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32952183" />
+      <window_info anchor="right" id="make" />
+      <window_info anchor="right" id="Database" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/judge_client/ncalls.h">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/judge_client/judge_client.cc">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="614">
+          <caret line="217" column="12" selection-start-line="217" selection-start-column="4" selection-end-line="217" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/judge_client/makefile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="22">
+          <caret line="1" column="4" selection-start-line="1" selection-start-column="4" selection-end-line="1" selection-end-column="86" />
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ProjectJDKs.UI">
+        <settings>
+          <last-edited>1.7</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>

@@ -1,7 +1,9 @@
 package com.zjgsu.messager;
 
+import com.zjgsu.service.zjgsu.JudgeService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.jms.JMSException;
@@ -9,7 +11,7 @@ import javax.jms.MapMessage;
 import javax.jms.Message;
 import javax.jms.MessageListener;
 
-import static com.zjgsu.util.JudgeCenterConstant.MESSAGE_RECEIVER_EVENT_SUBMISSION_CREATED;
+import static com.zjgsu.util.JudgeCenterConstant.QUESTION_WAITING_JUDGE;
 
 
 /**
@@ -28,7 +30,7 @@ public class MessageReceiver implements MessageListener {
             try {
                 String event = mapMessage.getString("event");
 
-                if (MESSAGE_RECEIVER_EVENT_SUBMISSION_CREATED.equals(event)) {
+                if (QUESTION_WAITING_JUDGE.equals(event)) {
                     newSubmissionHandler(mapMessage);
                 } else {
                     //    String.format("Unknown Event Received. [Event = %s]",event)
@@ -47,12 +49,15 @@ public class MessageReceiver implements MessageListener {
      * @throws JMSException
      */
     private void newSubmissionHandler(MapMessage mapMessage) throws JMSException {
-        long submissionId = mapMessage.getLong("submissionId");
+        int submissionId = mapMessage.getInt("submissionId");
         //  String.format("Received new submission task #%d",submissionId)
         Logger.info("Received new submission task #" + submissionId);
         //TODO
+        judgeService.judgeQuestion(submissionId);
     }
 
+    @Autowired
+    private JudgeService judgeService;
     /**
      * 日志记录器.
      */

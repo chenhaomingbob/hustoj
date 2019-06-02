@@ -27,6 +27,7 @@
         <junit.version>4.12</junit.version>
         <activemq.version>5.15.2</activemq.version>
         <javax.version>2.0.1</javax.version>
+        <commons-io.version>2.6</commons-io.version>
     </properties>
 
     <dependencies>
@@ -145,6 +146,13 @@
             <artifactId>javax.jms-api</artifactId>
             <version>${javax.version}</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/commons-io/commons-io -->
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>${commons-io.version}</version>
+        </dependency>
+
     </dependencies>
 
     <build>

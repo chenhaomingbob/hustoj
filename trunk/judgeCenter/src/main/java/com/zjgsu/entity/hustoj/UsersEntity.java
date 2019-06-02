@@ -17,8 +17,8 @@ public class UsersEntity {
     private String defunct;
     private String ip;
     private Timestamp accesstime;
-    private int volume;
-    private int language;
+    private Integer   volume;
+    private Integer   language;
     private String password;
     private Timestamp regTime;
     private String nick;
@@ -96,21 +96,21 @@ public class UsersEntity {
 
     @Basic
     @Column(name = "volume")
-    public int getVolume() {
+    public Integer   getVolume() {
         return volume;
     }
 
-    public void setVolume(int volume) {
+    public void setVolume(Integer   volume) {
         this.volume = volume;
     }
 
     @Basic
     @Column(name = "language")
-    public int getLanguage() {
+    public Integer   getLanguage() {
         return language;
     }
 
-    public void setLanguage(int language) {
+    public void setLanguage(Integer   language) {
         this.language = language;
     }
 
@@ -152,47 +152,5 @@ public class UsersEntity {
 
     public void setSchool(String school) {
         this.school = school;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        UsersEntity that = (UsersEntity) o;
-
-        if (volume != that.volume) return false;
-        if (language != that.language) return false;
-        if (userId != null ? !userId.equals(that.userId) : that.userId != null) return false;
-        if (email != null ? !email.equals(that.email) : that.email != null) return false;
-        if (submit != null ? !submit.equals(that.submit) : that.submit != null) return false;
-        if (solved != null ? !solved.equals(that.solved) : that.solved != null) return false;
-        if (defunct != null ? !defunct.equals(that.defunct) : that.defunct != null) return false;
-        if (ip != null ? !ip.equals(that.ip) : that.ip != null) return false;
-        if (accesstime != null ? !accesstime.equals(that.accesstime) : that.accesstime != null) return false;
-        if (password != null ? !password.equals(that.password) : that.password != null) return false;
-        if (regTime != null ? !regTime.equals(that.regTime) : that.regTime != null) return false;
-        if (nick != null ? !nick.equals(that.nick) : that.nick != null) return false;
-        if (school != null ? !school.equals(that.school) : that.school != null) return false;
-
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = userId != null ? userId.hashCode() : 0;
-        result = 31 * result + (email != null ? email.hashCode() : 0);
-        result = 31 * result + (submit != null ? submit.hashCode() : 0);
-        result = 31 * result + (solved != null ? solved.hashCode() : 0);
-        result = 31 * result + (defunct != null ? defunct.hashCode() : 0);
-        result = 31 * result + (ip != null ? ip.hashCode() : 0);
-        result = 31 * result + (accesstime != null ? accesstime.hashCode() : 0);
-        result = 31 * result + volume;
-        result = 31 * result + language;
-        result = 31 * result + (password != null ? password.hashCode() : 0);
-        result = 31 * result + (regTime != null ? regTime.hashCode() : 0);
-        result = 31 * result + (nick != null ? nick.hashCode() : 0);
-        result = 31 * result + (school != null ? school.hashCode() : 0);
-        return result;
     }
 }

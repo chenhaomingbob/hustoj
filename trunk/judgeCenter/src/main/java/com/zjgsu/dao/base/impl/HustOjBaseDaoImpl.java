@@ -24,19 +24,19 @@ import org.springframework.transaction.annotation.Transactional;
  */
 @SuppressWarnings({"rawtypes", "unchecked"})
 @Transactional
-public class HustOJBaseDaoImpl<T> implements BaseDao<T> {
+public class HustOjBaseDaoImpl<T> implements BaseDao<T> {
     /**
      * hql ： from 后面跟的 类名＋类对象 where 后 用 对象的属性做条件
      * sql： from 后面跟的是表名 where 后 用表中字段做条件
      */
     @Autowired
-    @Qualifier("sessionFactoryHUSTOJ")
-    private SessionFactory sessionFactoryHUSTOJ;
+    @Qualifier("sessionFactoryHustOj")
+    private SessionFactory sessionFactoryHustOj;
 
     private Class<T> clazz;
 
     protected Session getSession() {
-        return sessionFactoryHUSTOJ.getCurrentSession();
+        return sessionFactoryHustOj.getCurrentSession();
     }
 
     private static final int MAX_LIMIT = 1000;
@@ -45,14 +45,14 @@ public class HustOJBaseDaoImpl<T> implements BaseDao<T> {
 
     private static final int GET_RESULT_NUM = 1;
 
-    public HustOJBaseDaoImpl() {
+    public HustOjBaseDaoImpl() {
         ParameterizedType parameterizedType = (ParameterizedType) this.getClass().getGenericSuperclass();
         this.clazz = (Class<T>) parameterizedType.getActualTypeArguments()[0];
     }
 
     @Override
-    public String save(T t) {
-        return (String) this.getSession().save(t);
+    public int save(T t) {
+        return (int) this.getSession().save(t);
     }
 
     @Override

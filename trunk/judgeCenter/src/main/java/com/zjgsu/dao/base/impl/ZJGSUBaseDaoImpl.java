@@ -49,8 +49,8 @@ public class ZJGSUBaseDaoImpl<T> implements BaseDao<T> {
     }
 
     @Override
-    public String save(T t) {
-        return (String) this.getSession().save(t);
+    public int save(T t) {
+        return (int) this.getSession().save(t);
     }
 
     @Override

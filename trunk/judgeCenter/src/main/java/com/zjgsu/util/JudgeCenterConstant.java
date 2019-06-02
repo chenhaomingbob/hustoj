@@ -6,7 +6,28 @@ package com.zjgsu.util;
  */
 public class JudgeCenterConstant {
     /**
-     * 接收到的消息，其事件的"提交创建"
+     * mq  消息的关键字
      */
-    public static final String MESSAGE_RECEIVER_EVENT_SUBMISSION_CREATED = "SubmissionCreated";
+    public static final String QUESTION_WAITING_JUDGE = "QuestionWaitingJudge";
+    /**
+     * 文件分割符
+     */
+    public static final String FILE_SEPARATOR = "/";
+    /**
+     * 问题的标准测试输入文件前缀 (这个只起到规范作用)
+     */
+    public static final String PROBLEM_INPUT_FILE_NAME_PREFIX = "input#";
+    /**
+     * 问题的标准测试输入文件后置 (这个会影响到hustoj judge的读取)
+     */
+    public static final String PROBLEM_INPUT_FILE_NAME_SUFFIX = ".in";
+    /**
+     * 问题的标准测试输出文件前缀 (这个只起到规范作用)
+     */
+    public static final String PROBLEM_OUTPUT_FILE_NAME_PREFIX = "output#";
+    /**
+     * 问题的标准测试输出文件后置 (这个会影响到hustoj judge的读取)
+     */
+    public static final String PROBLEM_OUTPUT_FILE_NAME_SUFFIX = ".out";
+
 }

@@ -17,7 +17,7 @@ public interface BaseDao<T> {
     /**
      * 保存新记录
      */
-    String save(T t);
+    int save(T t);
 
     /**
      * 根据主键查询

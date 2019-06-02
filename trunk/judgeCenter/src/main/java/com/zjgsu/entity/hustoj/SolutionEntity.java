@@ -11,44 +11,45 @@ import java.sql.Timestamp;
 @Entity
 @Table(name = "solution", schema = "jol", catalog = "")
 public class SolutionEntity {
-    private int solutionId;
-    private int problemId;
+    private Integer solutionId;
+    private Integer problemId;
     private String userId;
-    private int time;
-    private int memory;
+    private Integer time;
+    private Integer memory;
     /**
      * 录入事件
      */
     private Timestamp inDate;
     private short result;
-    private int language;
+    private Integer language;
     private String ip;
     private Integer contestId;
     private byte valid;
     private byte num;
-    private int codeLength;
+    private Integer codeLength;
     private Timestamp judgetime;
     private BigDecimal passRate;
-    private int lintError;
+    private Integer lintError;
     private String judger;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "solution_id")
-    public int getSolutionId() {
+    public Integer getSolutionId() {
         return solutionId;
     }
 
-    public void setSolutionId(int solutionId) {
+    public void setSolutionId(Integer solutionId) {
         this.solutionId = solutionId;
     }
 
     @Basic
     @Column(name = "problem_id")
-    public int getProblemId() {
+    public Integer getProblemId() {
         return problemId;
     }
 
-    public void setProblemId(int problemId) {
+    public void setProblemId(Integer problemId) {
         this.problemId = problemId;
     }
 
@@ -64,21 +65,21 @@ public class SolutionEntity {
 
     @Basic
     @Column(name = "time")
-    public int getTime() {
+    public Integer getTime() {
         return time;
     }
 
-    public void setTime(int time) {
+    public void setTime(Integer time) {
         this.time = time;
     }
 
     @Basic
     @Column(name = "memory")
-    public int getMemory() {
+    public Integer getMemory() {
         return memory;
     }
 
-    public void setMemory(int memory) {
+    public void setMemory(Integer memory) {
         this.memory = memory;
     }
 
@@ -104,11 +105,11 @@ public class SolutionEntity {
 
     @Basic
     @Column(name = "language")
-    public int getLanguage() {
+    public Integer getLanguage() {
         return language;
     }
 
-    public void setLanguage(int language) {
+    public void setLanguage(Integer language) {
         this.language = language;
     }
 
@@ -154,11 +155,11 @@ public class SolutionEntity {
 
     @Basic
     @Column(name = "code_length")
-    public int getCodeLength() {
+    public Integer getCodeLength() {
         return codeLength;
     }
 
-    public void setCodeLength(int codeLength) {
+    public void setCodeLength(Integer codeLength) {
         this.codeLength = codeLength;
     }
 
@@ -184,11 +185,11 @@ public class SolutionEntity {
 
     @Basic
     @Column(name = "lint_error")
-    public int getLintError() {
+    public Integer getLintError() {
         return lintError;
     }
 
-    public void setLintError(int lintError) {
+    public void setLintError(Integer lintError) {
         this.lintError = lintError;
     }
 
@@ -200,55 +201,5 @@ public class SolutionEntity {
 
     public void setJudger(String judger) {
         this.judger = judger;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        SolutionEntity that = (SolutionEntity) o;
-
-        if (solutionId != that.solutionId) return false;
-        if (problemId != that.problemId) return false;
-        if (time != that.time) return false;
-        if (memory != that.memory) return false;
-        if (result != that.result) return false;
-        if (language != that.language) return false;
-        if (valid != that.valid) return false;
-        if (num != that.num) return false;
-        if (codeLength != that.codeLength) return false;
-        if (lintError != that.lintError) return false;
-        if (userId != null ? !userId.equals(that.userId) : that.userId != null) return false;
-        if (inDate != null ? !inDate.equals(that.inDate) : that.inDate != null) return false;
-        if (ip != null ? !ip.equals(that.ip) : that.ip != null) return false;
-        if (contestId != null ? !contestId.equals(that.contestId) : that.contestId != null) return false;
-        if (judgetime != null ? !judgetime.equals(that.judgetime) : that.judgetime != null) return false;
-        if (passRate != null ? !passRate.equals(that.passRate) : that.passRate != null) return false;
-        if (judger != null ? !judger.equals(that.judger) : that.judger != null) return false;
-
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        int result1 = solutionId;
-        result1 = 31 * result1 + problemId;
-        result1 = 31 * result1 + (userId != null ? userId.hashCode() : 0);
-        result1 = 31 * result1 + time;
-        result1 = 31 * result1 + memory;
-        result1 = 31 * result1 + (inDate != null ? inDate.hashCode() : 0);
-        result1 = 31 * result1 + (int) result;
-        result1 = 31 * result1 + language;
-        result1 = 31 * result1 + (ip != null ? ip.hashCode() : 0);
-        result1 = 31 * result1 + (contestId != null ? contestId.hashCode() : 0);
-        result1 = 31 * result1 + (int) valid;
-        result1 = 31 * result1 + (int) num;
-        result1 = 31 * result1 + codeLength;
-        result1 = 31 * result1 + (judgetime != null ? judgetime.hashCode() : 0);
-        result1 = 31 * result1 + (passRate != null ? passRate.hashCode() : 0);
-        result1 = 31 * result1 + lintError;
-        result1 = 31 * result1 + (judger != null ? judger.hashCode() : 0);
-        return result1;
     }
 }

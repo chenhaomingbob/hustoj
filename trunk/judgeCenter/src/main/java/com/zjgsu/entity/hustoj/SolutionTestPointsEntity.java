@@ -10,7 +10,7 @@ import java.sql.Timestamp;
 @Entity
 @Table(name = "solution_test_points", schema = "jol", catalog = "")
 public class SolutionTestPointsEntity {
-    private int testPointRecordId;
+    private Integer   testPointRecordId;
     private Integer solutionId;
     private String testPointInputFile;
     private String testPointOutputFile;
@@ -20,12 +20,13 @@ public class SolutionTestPointsEntity {
     private Timestamp testPointJudgeTime;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "test_point_record_id")
-    public int getTestPointRecordId() {
+    public Integer   getTestPointRecordId() {
         return testPointRecordId;
     }
 
-    public void setTestPointRecordId(int testPointRecordId) {
+    public void setTestPointRecordId(Integer   testPointRecordId) {
         this.testPointRecordId = testPointRecordId;
     }
 
@@ -99,41 +100,4 @@ public class SolutionTestPointsEntity {
         this.testPointJudgeTime = testPointJudgeTime;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        SolutionTestPointsEntity that = (SolutionTestPointsEntity) o;
-
-        if (testPointRecordId != that.testPointRecordId) return false;
-        if (solutionId != null ? !solutionId.equals(that.solutionId) : that.solutionId != null) return false;
-        if (testPointInputFile != null ? !testPointInputFile.equals(that.testPointInputFile) : that.testPointInputFile != null)
-            return false;
-        if (testPointOutputFile != null ? !testPointOutputFile.equals(that.testPointOutputFile) : that.testPointOutputFile != null)
-            return false;
-        if (testPointResult != null ? !testPointResult.equals(that.testPointResult) : that.testPointResult != null)
-            return false;
-        if (testPointUseTime != null ? !testPointUseTime.equals(that.testPointUseTime) : that.testPointUseTime != null)
-            return false;
-        if (testPointUseMemory != null ? !testPointUseMemory.equals(that.testPointUseMemory) : that.testPointUseMemory != null)
-            return false;
-        if (testPointJudgeTime != null ? !testPointJudgeTime.equals(that.testPointJudgeTime) : that.testPointJudgeTime != null)
-            return false;
-
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = testPointRecordId;
-        result = 31 * result + (solutionId != null ? solutionId.hashCode() : 0);
-        result = 31 * result + (testPointInputFile != null ? testPointInputFile.hashCode() : 0);
-        result = 31 * result + (testPointOutputFile != null ? testPointOutputFile.hashCode() : 0);
-        result = 31 * result + (testPointResult != null ? testPointResult.hashCode() : 0);
-        result = 31 * result + (testPointUseTime != null ? testPointUseTime.hashCode() : 0);
-        result = 31 * result + (testPointUseMemory != null ? testPointUseMemory.hashCode() : 0);
-        result = 31 * result + (testPointJudgeTime != null ? testPointJudgeTime.hashCode() : 0);
-        return result;
-    }
 }

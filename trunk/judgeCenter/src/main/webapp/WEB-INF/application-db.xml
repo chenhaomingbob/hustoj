@@ -5,7 +5,7 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
     <context:property-placeholder location="classpath:config.properties"/>
     <!-- DataBase based on hibernate  连接hustoj的datasoure-->
-    <bean id="dataSourceHUSTOJ" class="com.alibaba.druid.pool.DruidDataSource"
+    <bean id="dataSourceHustOj" class="com.alibaba.druid.pool.DruidDataSource"
           init-method="init" destroy-method="close">
         <property name="driverClassName" value="${jdbc.hustoj.driverClassName}"/>
         <property name="url" value="${jdbc.hustoj.url}"/>
@@ -25,8 +25,8 @@
         <property name="testOnReturn" value="true"/>
     </bean>
     <!--配置session工厂-->
-    <bean id="sessionFactoryHUSTOJ" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
-        <property name="dataSource" ref="dataSourceHUSTOJ"/>
+    <bean id="sessionFactoryHustOj" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+        <property name="dataSource" ref="dataSourceHustOj"/>
         <property name="packagesToScan">
             <list>
                 <value>com.zjgsu.entity.hustoj</value>
@@ -45,10 +45,10 @@
         </property>
     </bean>
     <!-- 事物管理器配置  -->
-    <bean id="transactionManagerHUSTOJ" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
-        <property name="sessionFactory" ref="sessionFactoryHUSTOJ"/>
+    <bean id="transactionManagerHustOj" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+        <property name="sessionFactory" ref="sessionFactoryHustOj"/>
     </bean>
-    <tx:annotation-driven transaction-manager="transactionManagerHUSTOJ"/>
+    <tx:annotation-driven transaction-manager="transactionManagerHustOj"/>
     <!-- DataBase based on hibernate  连接zjgsu 的datasoure-->
     <bean id="dataSourceZJGSU" class="com.alibaba.druid.pool.DruidDataSource"
           init-method="init" destroy-method="close">

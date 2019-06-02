@@ -9,16 +9,16 @@ import javax.persistence.*;
 @Entity
 @Table(name = "source_code_user", schema = "jol", catalog = "")
 public class SourceCodeUserEntity {
-    private int solutionId;
+    private Integer   solutionId;
     private String source;
 
     @Id
     @Column(name = "solution_id")
-    public int getSolutionId() {
+    public Integer   getSolutionId() {
         return solutionId;
     }
 
-    public void setSolutionId(int solutionId) {
+    public void setSolutionId(Integer   solutionId) {
         this.solutionId = solutionId;
     }
 
@@ -32,23 +32,4 @@ public class SourceCodeUserEntity {
         this.source = source;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        SourceCodeUserEntity that = (SourceCodeUserEntity) o;
-
-        if (solutionId != that.solutionId) return false;
-        if (source != null ? !source.equals(that.source) : that.source != null) return false;
-
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = solutionId;
-        result = 31 * result + (source != null ? source.hashCode() : 0);
-        return result;
-    }
 }

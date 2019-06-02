@@ -10,7 +10,7 @@ import java.sql.Timestamp;
 @Entity
 @Table(name = "problem", schema = "jol", catalog = "")
 public class ProblemEntity {
-    private int problemId;
+    private Integer   problemId;
     private String title;
     private String description;
     private String input;
@@ -21,8 +21,8 @@ public class ProblemEntity {
     private String hint;
     private String source;
     private Timestamp inDate;
-    private int timeLimit;
-    private int memoryLimit;
+    private Integer   timeLimit;
+    private Integer   memoryLimit;
     private String defunct;
     private Integer accepted;
     private Integer submit;
@@ -30,11 +30,11 @@ public class ProblemEntity {
 
     @Id
     @Column(name = "problem_id")
-    public int getProblemId() {
+    public Integer   getProblemId() {
         return problemId;
     }
 
-    public void setProblemId(int problemId) {
+    public void setProblemId(Integer   problemId) {
         this.problemId = problemId;
     }
 
@@ -140,21 +140,21 @@ public class ProblemEntity {
 
     @Basic
     @Column(name = "time_limit")
-    public int getTimeLimit() {
+    public Integer   getTimeLimit() {
         return timeLimit;
     }
 
-    public void setTimeLimit(int timeLimit) {
+    public void setTimeLimit(Integer   timeLimit) {
         this.timeLimit = timeLimit;
     }
 
     @Basic
     @Column(name = "memory_limit")
-    public int getMemoryLimit() {
+    public Integer   getMemoryLimit() {
         return memoryLimit;
     }
 
-    public void setMemoryLimit(int memoryLimit) {
+    public void setMemoryLimit(Integer   memoryLimit) {
         this.memoryLimit = memoryLimit;
     }
 
@@ -198,53 +198,4 @@ public class ProblemEntity {
         this.solved = solved;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        ProblemEntity that = (ProblemEntity) o;
-
-        if (problemId != that.problemId) return false;
-        if (timeLimit != that.timeLimit) return false;
-        if (memoryLimit != that.memoryLimit) return false;
-        if (title != null ? !title.equals(that.title) : that.title != null) return false;
-        if (description != null ? !description.equals(that.description) : that.description != null) return false;
-        if (input != null ? !input.equals(that.input) : that.input != null) return false;
-        if (output != null ? !output.equals(that.output) : that.output != null) return false;
-        if (sampleInput != null ? !sampleInput.equals(that.sampleInput) : that.sampleInput != null) return false;
-        if (sampleOutput != null ? !sampleOutput.equals(that.sampleOutput) : that.sampleOutput != null) return false;
-        if (spj != null ? !spj.equals(that.spj) : that.spj != null) return false;
-        if (hint != null ? !hint.equals(that.hint) : that.hint != null) return false;
-        if (source != null ? !source.equals(that.source) : that.source != null) return false;
-        if (inDate != null ? !inDate.equals(that.inDate) : that.inDate != null) return false;
-        if (defunct != null ? !defunct.equals(that.defunct) : that.defunct != null) return false;
-        if (accepted != null ? !accepted.equals(that.accepted) : that.accepted != null) return false;
-        if (submit != null ? !submit.equals(that.submit) : that.submit != null) return false;
-        if (solved != null ? !solved.equals(that.solved) : that.solved != null) return false;
-
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = problemId;
-        result = 31 * result + (title != null ? title.hashCode() : 0);
-        result = 31 * result + (description != null ? description.hashCode() : 0);
-        result = 31 * result + (input != null ? input.hashCode() : 0);
-        result = 31 * result + (output != null ? output.hashCode() : 0);
-        result = 31 * result + (sampleInput != null ? sampleInput.hashCode() : 0);
-        result = 31 * result + (sampleOutput != null ? sampleOutput.hashCode() : 0);
-        result = 31 * result + (spj != null ? spj.hashCode() : 0);
-        result = 31 * result + (hint != null ? hint.hashCode() : 0);
-        result = 31 * result + (source != null ? source.hashCode() : 0);
-        result = 31 * result + (inDate != null ? inDate.hashCode() : 0);
-        result = 31 * result + timeLimit;
-        result = 31 * result + memoryLimit;
-        result = 31 * result + (defunct != null ? defunct.hashCode() : 0);
-        result = 31 * result + (accepted != null ? accepted.hashCode() : 0);
-        result = 31 * result + (submit != null ? submit.hashCode() : 0);
-        result = 31 * result + (solved != null ? solved.hashCode() : 0);
-        return result;
-    }
 }

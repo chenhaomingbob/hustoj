@@ -5,5 +5,8 @@ package com.zjgsu.service.hustoj;
  * @date 2019/6/1 11:41
  */
 public interface SolutionService {
-    void submitUserSolution();
+
+    void submitUserSolution(int problemId, String userId, String ip,int languageId, String sourceCode);
+
+    void writeTestPointsFileToJudgeDisk(int problemId);
 }

@@ -1,6 +1,6 @@
 package com.zjgsu.dao.hustoj.impl;
 
-import com.zjgsu.dao.base.impl.HustOJBaseDaoImpl;
+import com.zjgsu.dao.base.impl.HustOjBaseDaoImpl;
 import com.zjgsu.dao.hustoj.UsersDao;
 import com.zjgsu.entity.hustoj.UsersEntity;
 import org.springframework.stereotype.Repository;
@@ -10,5 +10,5 @@ import org.springframework.stereotype.Repository;
  * @date 2019/6/1 11:08
  */
 @Repository
-public class UsersDaoImpl extends HustOJBaseDaoImpl<UsersEntity> implements UsersDao {
+public class UsersDaoImpl extends HustOjBaseDaoImpl<UsersEntity> implements UsersDao {
 }
