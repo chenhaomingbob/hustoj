@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 /**
  * 用来判断一般题目 ：填空题、选择题、判断题.
+ *
  * @author chm 神魔法
  * @date 2019/6/2 14:02
  */
@@ -13,22 +14,30 @@ public class JudgeNormalQuestionServiceImpl implements JudgeNormalQuestionServic
     /**
      * 评判一般填空题
      */
-    private void judgeNormalFillQuestion(String userAnswer,String[] standardAnswer) {
+    private void judgeNormalFillQuestion(String userAnswer, String[] standardAnswer) {
 
     }
 
     /**
      * 按多选题来写
      */
-    private void judgeChoiceQuestion() {
-
+    private boolean judgeChoiceQuestion(int userAnswer, int standardAnswer) {
+        if (userAnswer == standardAnswer) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     /**
      * 评判判断题
      */
-    private void judgeJudgmentQuestion() {
-
+    private boolean judgeJudgmentQuestion(String userAnswer, String standardAnswer) {
+        if (userAnswer.equalsIgnoreCase(standardAnswer)) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
 
