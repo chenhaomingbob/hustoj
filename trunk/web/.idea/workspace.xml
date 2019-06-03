@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="ccaf6b1a-e937-4329-a5be-1fd0a3833248" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../core/judge_client/judge_client.cc" beforeDir="false" afterPath="$PROJECT_DIR$/../core/judge_client/judge_client.cc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../judgeCenter/src/main/java/com/zjgsu/dao/base/BaseDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/../judgeCenter/src/main/java/com/zjgsu/dao/base/BaseDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../judgeCenter/src/main/java/com/zjgsu/dao/base/impl/HustOJBaseDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../judgeCenter/src/main/java/com/zjgsu/dao/base/impl/HustOjBaseDaoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../judgeCenter/src/main/java/com/zjgsu/dao/base/impl/ZJGSUBaseDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../judgeCenter/src/main/java/com/zjgsu/dao/base/impl/ZJGSUBaseDaoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../judgeCenter/src/main/java/com/zjgsu/dao/hustoj/impl/ProblemDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../judgeCenter/src/main/java/com/zjgsu/dao/hustoj/impl/ProblemDaoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../judgeCenter/src/main/java/com/zjgsu/dao/hustoj/impl/SolutionDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../judgeCenter/src/main/java/com/zjgsu/dao/hustoj/impl/SolutionDaoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../judgeCenter/src/main/java/com/zjgsu/dao/hustoj/impl/SolutionTestPointsDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../judgeCenter/src/main/java/com/zjgsu/dao/hustoj/impl/SolutionTestPointsDaoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../judgeCenter/src/main/java/com/zjgsu/dao/hustoj/impl/SourceCodeDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../judgeCenter/src/main/java/com/zjgsu/dao/hustoj/impl/SourceCodeDaoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../judgeCenter/src/main/java/com/zjgsu/dao/hustoj/impl/SourceCodeUserDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../judgeCenter/src/main/java/com/zjgsu/dao/hustoj/impl/SourceCodeUserDaoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../judgeCenter/src/main/java/com/zjgsu/dao/hustoj/impl/UsersDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../judgeCenter/src/main/java/com/zjgsu/dao/hustoj/impl/UsersDaoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../judgeCenter/src/main/java/com/zjgsu/entity/hustoj/ProblemEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../judgeCenter/src/main/java/com/zjgsu/entity/hustoj/ProblemEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../judgeCenter/src/main/java/com/zjgsu/entity/hustoj/SolutionEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../judgeCenter/src/main/java/com/zjgsu/entity/hustoj/SolutionEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../judgeCenter/src/main/java/com/zjgsu/entity/hustoj/SolutionTestPointsEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../judgeCenter/src/main/java/com/zjgsu/entity/hustoj/SolutionTestPointsEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../judgeCenter/src/main/java/com/zjgsu/entity/hustoj/SourceCodeEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../judgeCenter/src/main/java/com/zjgsu/entity/hustoj/SourceCodeEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../judgeCenter/src/main/java/com/zjgsu/entity/hustoj/SourceCodeUserEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../judgeCenter/src/main/java/com/zjgsu/entity/hustoj/SourceCodeUserEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../judgeCenter/src/main/java/com/zjgsu/entity/hustoj/UsersEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../judgeCenter/src/main/java/com/zjgsu/entity/hustoj/UsersEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../judgeCenter/src/main/java/com/zjgsu/service/hustoj/SolutionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../judgeCenter/src/main/java/com/zjgsu/service/hustoj/SolutionService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../judgeCenter/src/main/java/com/zjgsu/service/hustoj/impl/SolutionServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../judgeCenter/src/main/java/com/zjgsu/service/hustoj/impl/SolutionServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../judgeCenter/src/main/webapp/WEB-INF/application-db.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../judgeCenter/src/main/webapp/WEB-INF/application-db.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../judgeCenter/src/test/java/com/zjgsu/service/hustoj/impl/SolutionServiceImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../judgeCenter/src/test/java/com/zjgsu/service/hustoj/impl/SolutionServiceImplTest.java" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution>
+      <executable />
+    </execution>
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/submit.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="349">
+              <caret line="217" column="73" lean-forward="true" selection-start-line="217" selection-start-column="71" selection-end-line="217" selection-end-column="73" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/admin/problem_judge.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="194">
+              <caret line="195" column="9" lean-forward="true" selection-start-line="195" selection-start-column="9" selection-end-line="195" selection-end-column="9" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>insert</find>
+      <find>code_length</find>
+      <find>len</find>
+      <find>$OJ_SAE</find>
+      <find>SaeStorage</find>
+    </findStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="PhpServers">
+    <servers />
+  </component>
+  <component name="ProjectConfigurationFiles">
+    <option name="files">
+      <list>
+        <option value="$PROJECT_DIR$/.idea/web.iml" />
+        <option value="$PROJECT_DIR$/.idea/misc.xml" />
+        <option value="$PROJECT_DIR$/.idea/modules.xml" />
+        <option value="$PROJECT_DIR$/.idea/vcs.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="7">
+    <option name="x" value="478" />
+    <option name="y" value="28" />
+    <option name="width" value="1400" />
+    <option name="height" value="1000" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="web" type="b2602c69:ProjectViewProjectNode" />
+              <item name="web" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="web" type="b2602c69:ProjectViewProjectNode" />
+              <item name="web" type="462c0819:PsiDirectoryNode" />
+              <item name="admin" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="web" type="b2602c69:ProjectViewProjectNode" />
+              <item name="web" type="462c0819:PsiDirectoryNode" />
+              <item name="upload" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="ccaf6b1a-e937-4329-a5be-1fd0a3833248" name="Default Changelist" comment="" />
+      <created>1559371854734</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1559371854734</updated>
+      <workItem from="1559371856684" duration="1087000" />
+      <workItem from="1559383413444" duration="3057000" />
+      <workItem from="1559386764776" duration="1897000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="6041000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1936" height="1096" extended-state="7" />
+    <layout>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.09488273" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Database Changes" order="8" />
+      <window_info anchor="bottom" id="Version Control" order="9" />
+      <window_info anchor="bottom" id="Terminal" order="10" />
+      <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Database" order="3" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/submit.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="349">
+          <caret line="217" column="73" lean-forward="true" selection-start-line="217" selection-start-column="71" selection-end-line="217" selection-end-column="73" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/problem_judge.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="194">
+          <caret line="195" column="9" lean-forward="true" selection-start-line="195" selection-start-column="9" selection-end-line="195" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>
