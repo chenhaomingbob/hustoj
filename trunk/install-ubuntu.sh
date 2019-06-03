@@ -18,7 +18,7 @@ cp src/install/java0.policy  /home/judge/etc
 cp src/install/judge.conf  /home/judge/etc
 chmod +x src/install/ans2out
 
-if grep "OJ_SHM_RUN=0" etc/judge.conf ; then
+if grep "OJ_SHM_RUN=0" etc/judge.conf e; then
 	mkdir run0 run1 run2 run3
 	chown judge run0 run1 run2 run3
 fi
