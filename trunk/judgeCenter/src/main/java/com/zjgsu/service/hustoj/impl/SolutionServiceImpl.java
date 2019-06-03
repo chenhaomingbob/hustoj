@@ -22,6 +22,7 @@ import sun.rmi.runtime.Log;
 
 import java.io.File;
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.nio.charset.Charset;
 import java.sql.Timestamp;
 import java.util.List;
@@ -86,6 +87,7 @@ public class SolutionServiceImpl implements SolutionService {
         solutionEntity.setNum((byte) 0);
         solutionEntity.setLintError(0);
         solutionEntity.setJudger("");
+        solutionEntity.setPassRate(new BigDecimal(0));
 
         int solutionId = Integer.valueOf(solutionDao.save(solutionEntity));
         SourceCodeEntity sourceCodeEntity = new SourceCodeEntity();
