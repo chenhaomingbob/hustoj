@@ -14,6 +14,7 @@ public class TestPointEntity {
     private Integer status;
     private String inputContent;
     private String outputContent;
+    private Integer score;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -23,10 +24,6 @@ public class TestPointEntity {
     }
 
     public void setTestPonitId(Integer testPonitId) {
-        this.testPonitId = testPonitId;
-    }
-
-    public void setTestPonitId(int testPonitId) {
         this.testPonitId = testPonitId;
     }
 
@@ -69,4 +66,15 @@ public class TestPointEntity {
     public void setOutputContent(String outputContent) {
         this.outputContent = outputContent;
     }
+
+    @Basic
+    @Column(name = "score")
+    public Integer getScore() {
+        return score;
+    }
+
+    public void setScore(Integer score) {
+        this.score = score;
+    }
+
 }

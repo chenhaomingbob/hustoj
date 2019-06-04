@@ -5,8 +5,10 @@
        xmlns:util="http://www.springframework.org/schema/util"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
     <context:component-scan base-package="com"/>
-
-
+    <!--    constant-->
+    <util:constant id="HOST_IP" static-field="com.zjgsu.util.JudgeCenterConstant.HOST_IP"/>
+    <util:constant id="HOST_NAME" static-field="com.zjgsu.util.JudgeCenterConstant.HOST_NAME"/>
+    <!--    import-->
     <import resource="application-db.xml"/>
     <import resource="application-mq.xml"/>
 </beans>

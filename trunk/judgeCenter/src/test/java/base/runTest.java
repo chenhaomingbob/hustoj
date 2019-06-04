@@ -5,6 +5,7 @@ import com.zjgsu.dao.hustoj.SourceCodeDao;
 import com.zjgsu.entity.hustoj.ProblemEntity;
 import com.zjgsu.entity.hustoj.SourceCodeEntity;
 import com.zjgsu.service.hustoj.SolutionService;
+import com.zjgsu.util.JudgeCenterConstant;
 import org.apache.commons.io.FileUtils;
 import org.hibernate.criterion.Restrictions;
 import org.junit.Test;
@@ -31,6 +32,11 @@ public class runTest {
     @Autowired
     private SolutionService solutionService;
     @Test
+    public void test23() {
+        System.out.println(JudgeCenterConstant.HOST_IP);
+        System.out.println(JudgeCenterConstant.HOST_NAME);
+    }
+    @Test
     public void test1() throws IOException {
         String filePath = "/home/judge/test.in";
         File file = new File(filePath);
@@ -47,9 +53,6 @@ public class runTest {
 
     }
 
-    @Test
-    public void addTestFiles(){
-        solutionService.writeTestPointsFileToJudgeDisk(1002);
-    }
+
 
 }

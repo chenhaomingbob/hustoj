@@ -6,6 +6,14 @@ package com.zjgsu.util;
  */
 public class JudgeCenterConstant {
     /**
+     * ip
+     */
+    public static String HOST_IP = null;
+    /**
+     * name
+     */
+    public static String HOST_NAME = null;
+    /**
      * mq  消息的关键字
      */
     public static final String QUESTION_WAITING_JUDGE = "QuestionWaitingJudge";
@@ -26,5 +34,12 @@ public class JudgeCenterConstant {
      * 问题的标准测试输出文件后置 (这个会影响到hustoj judge的读取)
      */
     public static final String PROBLEM_OUTPUT_FILE_NAME_SUFFIX = ".out";
-
+    /**
+     * 测试文件的类型 输入
+     */
+    public static final int TEST_FILE_INPUT_TYPE = 1;
+    /**
+     * 测试文件的类型 输出
+     */
+    public static final int TEST_FILE_OUTPUT_TYPE = 2;
 }

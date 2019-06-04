@@ -105,65 +105,10 @@ public class SolutionServiceImpl implements SolutionService {
         Logger.info("SolutionId:{} 已成功保存至数据库", solutionId);
     }
 
-    /**
-     * 创建测试点文件
-     */
-    @Override
-    public void writeTestPointsFileToJudgeDisk(int problemId) {
-        //1.根据problemId 查询
-        Criterion statusCriterion = Restrictions.eq("status", 1);
-        Criterion problemCriterion = Restrictions.eq("problemId", problemId);
-        List<TestPointEntity> testPointEntityList = testPointDao.listByCriterion(statusCriterion, problemCriterion);
-        //2.根据数据的测试点数据，保存文件
-        String problemDataFileDirPath = judgeDataLocation + problemId;
-        try {
-            File testFile;
-            for (int i = 0; i < testPointEntityList.size(); i++) {
-                TestPointEntity testPointEntity = testPointEntityList.get(i);
-                // input
-                String inputFilePath = generateProblemTestFileName(problemDataFileDirPath, i, 1);
-                testFile = new File(inputFilePath);
-                // 覆盖写。并且如果该路径不存在，会直接都创建
-                FileUtils.write(testFile, testPointEntity.getInputContent(), Charset.forName("UTF-8"));
-                // output
-                String outputFilePath = generateProblemTestFileName(problemDataFileDirPath, i, 2);
-                testFile = new File(outputFilePath);
-                FileUtils.write(testFile, testPointEntity.getOutputContent(), Charset.forName("UTF-8"));
-            }
-            Logger.info("创建测试文件,problemId:{},测试点个数:{}", problemId, testPointEntityList.size());
-        } catch (IOException e) {
-            Logger.error("创建测试文件时失败,problemId:{}", problemId, e);
-        }
-    }
 
-    /**
-     * 形成测试文件的名称
-     *
-     * @param number 顺序编号
-     * @param type   类型， 输入(1)/输出(2)
-     * @return 文件名
-     */
-    private String generateProblemTestFileName(String problemDataFileDirPath, int number, int type) {
-        StringBuilder stringBuilder = new StringBuilder(problemDataFileDirPath).append(JudgeCenterConstant.FILE_SEPARATOR).append(JudgeCenterConstant.PROBLEM_Test_FILE_NAME_PREFIX).append(number);
-        if (TestFileInputType == type) {
-            stringBuilder.append(JudgeCenterConstant.PROBLEM_INPUT_FILE_NAME_SUFFIX);
-        } else if (TestFileOutpuType == type) {
-            stringBuilder.append(JudgeCenterConstant.PROBLEM_OUTPUT_FILE_NAME_SUFFIX);
-        }
 
-        return stringBuilder.toString();
-    }
 
-    /**
-     * 测试文件的类型 输入
-     */
-    private static final int TestFileInputType = 1;
-    /**
-     * 测试文件的类型 输出
-     */
-    private static final int TestFileOutpuType = 2;
-    @Value("${hustoj.judge.data.location}")
-    private String judgeDataLocation;
+
 
     @Autowired
     private TestPointDao testPointDao;
