@@ -1,6 +1,8 @@
 package com.zjgsu.service.zjgsu.impl;
 
 import com.zjgsu.service.zjgsu.JudgeNormalQuestionService;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Service;
 
 /**
@@ -14,14 +16,22 @@ public class JudgeNormalQuestionServiceImpl implements JudgeNormalQuestionServic
     /**
      * 评判一般填空题
      */
-    private void judgeNormalFillQuestion(String userAnswer, String[] standardAnswer) {
-
+    @Override
+    public boolean judgeNormalFillQuestion(String userAnswer, String[] standardAnswers) {
+        userAnswer = userAnswer.replaceAll(" ","");
+        for (String standardAnswer : standardAnswers) {
+            if (standardAnswer.replaceAll(" ", "").equals(userAnswer)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     /**
      * 按多选题来写
      */
-    private boolean judgeChoiceQuestion(int userAnswer, int standardAnswer) {
+    @Override
+    public boolean judgeChoiceQuestion(int userAnswer, int standardAnswer) {
         if (userAnswer == standardAnswer) {
             return true;
         } else {
@@ -32,13 +42,17 @@ public class JudgeNormalQuestionServiceImpl implements JudgeNormalQuestionServic
     /**
      * 评判判断题
      */
-    private boolean judgeJudgmentQuestion(String userAnswer, String standardAnswer) {
+    @Override
+    public boolean judgeJudgmentQuestion(String userAnswer, String standardAnswer) {
         if (userAnswer.equalsIgnoreCase(standardAnswer)) {
             return true;
         } else {
             return false;
         }
     }
-
+    /**
+     * 日志记录器.
+     */
+    private static final Logger Logger = LogManager.getLogger(JudgeNormalQuestionServiceImpl.class);
 
 }

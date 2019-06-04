@@ -94,6 +94,8 @@ CREATE TABLE  `problem` (
   PRIMARY KEY (`problem_id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=1000 DEFAULT CHARSET=utf8mb4;
 
+INSERT INTO `problem` VALUES (1000, '123', NULL, NULL, NULL, NULL, NULL, '0', NULL, NULL, NULL, 10, 123, 'N', 6, 12, 0);
+
 CREATE TABLE  `reply` (
   `rid` int(11) NOT NULL AUTO_INCREMENT,
   `author_id` varchar(48) NOT NULL,
