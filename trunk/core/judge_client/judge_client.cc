@@ -201,7 +201,20 @@ long get_file_size(const char *filename) {
 
     return (long) f_stat.st_size;
 }
-
+/**
+ * 创建：2019-5-31  陈豪明 add
+ * get now time
+ **/
+void get_now_time(char *now_time) {
+    time_t timep;
+    struct tm *p;
+    time(&timep);
+    p = gmtime(&timep);
+    sprintf(now_time, "%d-%02d-%02d %02d:%02d:%02d\n", 1900 + p->tm_year, 1 + p->tm_mon, p->tm_mday, 8 + p->tm_hour,
+            p->tm_min, p->tm_sec);
+    printf("%d-%02d-%02d %02d:%02d:%02d\n", 1900 + p->tm_year, 1 + p->tm_mon, p->tm_mday, 8 + p->tm_hour, p->tm_min,
+           p->tm_sec);
+}
 void write_log(const char *_fmt, ...) {
     va_list ap;
     char fmt[4096];
@@ -2227,20 +2240,7 @@ int special_judge(char *oj_home, int problem_id, char *infile, char *outfile,
     return ret;
 }
 
-/**
- * 创建：2019-5-31  陈豪明 add
- * get now time
- **/
-void get_now_time(char *now_time) {
-    time_t timep;
-    struct tm *p;
-    time(&timep);
-    p = gmtime(&timep);
-    sprintf(now_time, "%d-%02d-%02d %02d:%02d:%02d\n", 1900 + p->tm_year, 1 + p->tm_mon, p->tm_mday, 8 + p->tm_hour,
-            p->tm_min, p->tm_sec);
-    printf("%d-%02d-%02d %02d:%02d:%02d\n", 1900 + p->tm_year, 1 + p->tm_mon, p->tm_mday, 8 + p->tm_hour, p->tm_min,
-           p->tm_sec);
-}
+
 /**
  *  创建：2019-5-31  陈豪明 add
  *  将每个测试点的数据写入数据库
