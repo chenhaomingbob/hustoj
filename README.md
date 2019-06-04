@@ -23,3 +23,8 @@
 - [ ] 再次基于上增加评判选择题，填空等
 - [x] 目前发现hustoj在创建本地评测文件时，只能通过http请求其php后台，搭建号平台后需要删除。
 
+
+### 注意
+- ubuntu16 使用阿里云source可能会导致clang安装失败。本人使用了163镜像，ok
+- 假如/home/judge/data ，没有problem 的文件夹会导致solution的result永远在3，且没有runtimeinfo信息。
+

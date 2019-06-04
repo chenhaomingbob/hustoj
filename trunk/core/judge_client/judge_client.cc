@@ -205,7 +205,10 @@ long get_file_size(const char *filename) {
 void write_log(const char *_fmt, ...) {
     va_list ap;
     char fmt[4096];
-    strncpy(fmt, _fmt, 4096);
+    char now_time[20];
+    get_now_time(now_time);
+    strncpy(fmt,now_time,4096);
+    strncat(fmt, _fmt, 4096);
     char buffer[4096];
     //      time_t          t = time(NULL);
     //int l;
@@ -2816,7 +2819,7 @@ int main(int argc, char **argv) {
         get_test_file(work_dir, p_id);
     if (p_id > 0 && (dp = opendir(fullpath)) == NULL) {
 
-        write_log("No such dir:%s!\n", fullpath);
+        write_log("[ERROR] No such dir:%s!\n", fullpath);
 #ifdef _mysql_h
         if (!http_judge)
             mysql_close(conn);

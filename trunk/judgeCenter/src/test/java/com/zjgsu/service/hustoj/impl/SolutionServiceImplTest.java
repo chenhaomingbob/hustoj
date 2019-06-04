@@ -32,7 +32,11 @@ public class SolutionServiceImplTest {
                 "    printf(\"%d\\n\",a+b); \n" +
                 "    return 0; \n" +
                 "} ";
-        solutionService.submitUserSolution(problemId, userId, ip, language, sourceCode);
+
+        for (int i = 0; i < 5; i++) {
+            solutionService.submitUserSolution(problemId, userId, ip, language, sourceCode);
+
+        }
 
     }
 }
