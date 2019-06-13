@@ -276,8 +276,9 @@ CREATE TABLE `test_point`  (
   `input_content` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '输入内容',
   `output_content` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '输出内容',
   `status` tinyint(255) NULL DEFAULT NULL,
+  `score` int(11) DEFAULT NULL,
   PRIMARY KEY (`test_ponit_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 3 DEFAULT CHARSET=utf8mb4;
 DROP TABLE IF EXISTS `exception`;
 CREATE TABLE `exception`  (
   `error_id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -286,7 +287,7 @@ CREATE TABLE `exception`  (
   `created_time` timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP(0) COMMENT '创建时间',
   `status` tinyint(3) DEFAULT NULL COMMENT '状态',
   PRIMARY KEY (`error_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 1  DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of test_point
