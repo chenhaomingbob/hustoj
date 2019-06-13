@@ -232,6 +232,20 @@ CREATE TABLE `share_code` (
   PRIMARY KEY (`share_id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=1000 DEFAULT CHARSET=utf8mb4;
 
+CREATE TABLE `solution_test_points`  (
+  `test_point_record_id` int(11) NOT NULL AUTO_INCREMENT,
+  `solution_id` int(11) DEFAULT NULL COMMENT '用户提交的id',
+  `test_point_input_file` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL COMMENT '测试点的输入文件',
+  `test_point_output_file` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL COMMENT '测试点的标准输出文件',
+  `test_point_result` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL COMMENT '测试点的AC情况',
+  `test_point_use_time` int(11) DEFAULT NULL COMMENT '测试点的用例使用时间',
+  `test_point_use_memory` int(255) DEFAULT NULL COMMENT '测试点的用例使用内存',
+  `test_point_judge_time` timestamp(0) DEFAULT CURRENT_TIMESTAMP COMMENT '测试点的评判时间',
+  PRIMARY KEY (`test_point_record_id`) USING BTREE,
+  INDEX `idx_solution_id`(`solution_id`) USING BTREE COMMENT '根据业务得出'
+) ENGINE = InnoDB AUTO_INCREMENT = 32 DEFAULT CHARSET=utf8mb4;
+
+
 delimiter //
 drop trigger if exists simfilter//
 create trigger simfilter
@@ -264,6 +278,15 @@ CREATE TABLE `test_point`  (
   `status` tinyint(255) NULL DEFAULT NULL,
   PRIMARY KEY (`test_ponit_id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+DROP TABLE IF EXISTS `exception`;
+CREATE TABLE `exception`  (
+  `error_id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `event` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL COMMENT '错误事件，关键字',
+  `description` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL COMMENT '错误描述',
+  `created_time` timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP(0) COMMENT '创建时间',
+  `status` tinyint(3) DEFAULT NULL COMMENT '状态',
+  PRIMARY KEY (`error_id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of test_point
