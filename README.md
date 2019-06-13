@@ -18,6 +18,10 @@
 - 搭建了Java端
 - 成功脱离hustoj的php后台，完成judge的评判
 - 准备入手完成其他几种类型题目的评判
+
+### 至2019-6-13
+- 根据原有的安装脚本,编写了自己的[安装脚本](https://github.com/chenhaomingbob/hustoj/blob/master/trunk/install/my-install-ubuntu16.sh)
+-   定义接口
 ### TODO
 - [x] 将core与web代码分离，并删除php部分,再使其能适合我之后新搭建的后台
 - [ ] 再次基于上增加评判选择题，填空等
