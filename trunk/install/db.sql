@@ -292,5 +292,5 @@ CREATE TABLE `exception`  (
 -- ----------------------------
 -- Records of test_point
 -- ----------------------------
-INSERT INTO `test_point` VALUES (1, 1000, '1 3', '4', 1);
-INSERT INTO `test_point` VALUES (2, 1000, '2 6', '8', 1);
+INSERT INTO `test_point` VALUES (1, 1000, '1 3', '4', 1,10);
+INSERT INTO `test_point` VALUES (2, 1000, '2 6', '8', 1,10);
