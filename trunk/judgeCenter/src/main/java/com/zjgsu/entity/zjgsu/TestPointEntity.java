@@ -11,9 +11,9 @@ import javax.persistence.*;
 public class TestPointEntity {
     private Integer testPonitId;
     private Integer problemId;
-    private Integer status;
     private String inputContent;
     private String outputContent;
+    private Integer status;
     private Integer score;
 
     @Id
