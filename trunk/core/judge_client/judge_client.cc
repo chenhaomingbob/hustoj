@@ -2268,7 +2268,8 @@ void add_solution_test_point_record_mysql(int solution_id, int test_point_result
 }
 #endif
 
-// usedtime 使用时间 topmemory 应该是运行时最大内存
+// usedtime 使用时间 ms topmemory 应该是运行时最大内存
+// time_lmt 单位s
 void judge_solution(int &ACflg, int &usedtime, int time_lmt, int isspj,
                     int p_id, char *infile, char *outfile, char *userfile, int &PEflg,
                     int lang, char *work_dir, int &topmemory, int mem_lmt,

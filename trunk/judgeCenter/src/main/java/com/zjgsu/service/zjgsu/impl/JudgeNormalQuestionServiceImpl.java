@@ -28,7 +28,7 @@ public class JudgeNormalQuestionServiceImpl implements JudgeNormalQuestionServic
     }
 
     /**
-     * 按多选题来写
+     * 单选
      */
     @Override
     public boolean judgeChoiceQuestion(int userAnswer, int standardAnswer) {
