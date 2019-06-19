@@ -6,7 +6,7 @@ package com.zjgsu.service.hustoj;
  */
 public interface SolutionService {
 
-    void submitUserSolution(int problemId, String userId, String ip,int languageId, String sourceCode);
+    int submitUserSolution(int problemId, String userId, String ip,int languageId, String sourceCode);
 
 
 }

@@ -42,4 +42,35 @@ public class JudgeCenterConstant {
      * 测试文件的类型 输出
      */
     public static final int TEST_FILE_OUTPUT_TYPE = 2;
+
+    /**
+     * question type-填空
+     */
+    public static final int QUESTION_TYPE_NORMAL_FILL=1;
+    /**
+     * question type-选择题
+     */
+    public static final int QUESTION_TYPE_CHOICE=2;
+    /**
+     * question type-判断
+     */
+    public static final int QUESTION_TYPE_JUDGMENT=3;
+    /**
+     * question type-程序填空题
+     */
+    public static final int QUESTION_TYPE_PROGRAM_FILL=4;
+    /**
+     * question type-程序改错
+     */
+    public static final int QUESTION_TYPE_PROGRAM_CORRECTION=5;
+    /**
+     * question type-编程题
+     */
+    public static final int QUESTION_TYPE_PROGRAM=6;
+
+    /**
+     * 用户提交已被评判
+     */
+    public static final int USER_SUBMIT_STATUS_FINISHED=1;
+
 }

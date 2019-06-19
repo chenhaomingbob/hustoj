@@ -1,20 +1,22 @@
 package com.zjgsu.entity.zjgsu;
 
 import javax.persistence.*;
+import java.sql.Timestamp;
 
 /**
  * @author chm 神魔法
- * @date 2019/6/2 11:16
+ * @date 19-6-19 上午10:10
  */
 @Entity
-@Table(name = "test_point", schema = "zjgsu", catalog = "")
-public class TestPointEntity {
+@Table(name = "question_test_point", schema = "zjgsu", catalog = "")
+public class QuestionTestPointEntity {
     private Integer testPonitId;
-    private Integer problemId;
+    private Integer questionId;
     private String inputContent;
     private String outputContent;
-    private Integer status;
     private Integer score;
+    private Timestamp createdTime;
+    private Integer status;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -28,23 +30,13 @@ public class TestPointEntity {
     }
 
     @Basic
-    @Column(name = "problem_id")
-    public Integer getProblemId() {
-        return problemId;
+    @Column(name = "question_id")
+    public Integer getQuestionId() {
+        return questionId;
     }
 
-    public void setProblemId(Integer problemId) {
-        this.problemId = problemId;
-    }
-
-    @Basic
-    @Column(name = "status")
-    public Integer getStatus() {
-        return status;
-    }
-
-    public void setStatus(Integer status) {
-        this.status = status;
+    public void setQuestionId(Integer questionId) {
+        this.questionId = questionId;
     }
 
     @Basic
@@ -76,5 +68,26 @@ public class TestPointEntity {
     public void setScore(Integer score) {
         this.score = score;
     }
+
+    @Basic
+    @Column(name = "created_time")
+    public Timestamp getCreatedTime() {
+        return createdTime;
+    }
+
+    public void setCreatedTime(Timestamp createdTime) {
+        this.createdTime = createdTime;
+    }
+
+    @Basic
+    @Column(name = "status")
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
+
 
 }

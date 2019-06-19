@@ -94,7 +94,16 @@ public class ZJGSUBaseDaoImpl<T> implements BaseDao<T> {
     public List<T> listByCriterion(Criterion... criterions) {
         return this.listPageByCriterion(null, null, criterions);
     }
-
+    @Override
+    public List<T> listByCriterionAndOrder(List<Order> orders, Criterion... criterions) {
+        Criteria criteria = this.getCriteria(criterions);
+        if (orders != null && orders.size() > 0) {
+            for (Order order : orders) {
+                criteria.addOrder(order);
+            }
+        }
+        return this.listResultByCriterion(null, null, criteria);
+    }
     @Override
     public List<T> listPageByCriterion(Integer pageNum, Integer rowCount, Criterion... criterions) {
         Criteria criteria = this.getCriteria(criterions);

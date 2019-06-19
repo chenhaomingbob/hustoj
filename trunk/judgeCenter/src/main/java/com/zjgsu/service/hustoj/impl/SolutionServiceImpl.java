@@ -3,29 +3,18 @@ package com.zjgsu.service.hustoj.impl;
 import com.zjgsu.dao.hustoj.SolutionDao;
 import com.zjgsu.dao.hustoj.SourceCodeDao;
 import com.zjgsu.dao.hustoj.SourceCodeUserDao;
-import com.zjgsu.dao.zjgsu.TestPointDao;
+import com.zjgsu.dao.zjgsu.QuestionTestPointDao;
 import com.zjgsu.entity.hustoj.SolutionEntity;
 import com.zjgsu.entity.hustoj.SourceCodeEntity;
 import com.zjgsu.entity.hustoj.SourceCodeUserEntity;
-import com.zjgsu.entity.zjgsu.TestPointEntity;
 import com.zjgsu.service.hustoj.SolutionService;
-import com.zjgsu.util.JudgeCenterConstant;
-import org.apache.commons.io.FileUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.hibernate.criterion.Criterion;
-import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
-import sun.rmi.runtime.Log;
 
-import java.io.File;
-import java.io.IOException;
 import java.math.BigDecimal;
-import java.nio.charset.Charset;
 import java.sql.Timestamp;
-import java.util.List;
 
 
 /**
@@ -69,7 +58,7 @@ public class SolutionServiceImpl implements SolutionService {
      * 将zjgsu中的编程题提交到hustoj的数据库中
      */
     @Override
-    public void submitUserSolution(int problemId, String userId, String ip, int languageId, String sourceCode) {
+    public int submitUserSolution(int problemId, String userId, String ip, int languageId, String sourceCode) {
         SolutionEntity solutionEntity = new SolutionEntity();
 
         solutionEntity.setProblemId(problemId);
@@ -89,7 +78,7 @@ public class SolutionServiceImpl implements SolutionService {
         solutionEntity.setJudger("");
         solutionEntity.setPassRate(new BigDecimal(0));
 
-        int solutionId = Integer.valueOf(solutionDao.save(solutionEntity));
+        int solutionId = solutionDao.save(solutionEntity);
         SourceCodeEntity sourceCodeEntity = new SourceCodeEntity();
         sourceCodeEntity.setSolutionId(solutionId);
         sourceCodeEntity.setSource(sourceCode);
@@ -99,19 +88,16 @@ public class SolutionServiceImpl implements SolutionService {
         sourceCodeUserEntity.setSolutionId(solutionId);
         sourceCodeUserEntity.setSource(sourceCode);
         sourceCodeUserDao.save(sourceCodeUserEntity);
-        // result 状态设置为0 ，裁判机会轮询数据库获取到。
+        // result 状态设置为0 ，裁判机才会轮询数据库获取到。
         solutionEntity.setResult((short) 0);
         solutionDao.update(solutionEntity);
         Logger.info("SolutionId:{} 已成功保存至数据库", solutionId);
+        return solutionId;
     }
 
 
-
-
-
-
     @Autowired
-    private TestPointDao testPointDao;
+    private QuestionTestPointDao questionTestPointDao;
     @Autowired
     private SourceCodeDao sourceCodeDao;
     @Autowired

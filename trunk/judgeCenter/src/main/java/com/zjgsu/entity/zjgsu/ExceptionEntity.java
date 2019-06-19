@@ -5,7 +5,7 @@ import java.sql.Timestamp;
 
 /**
  * @author chm 神魔法
- * @date 2019/6/4 13:04
+ * @date 19-6-19 上午9:59
  */
 @Entity
 @Table(name = "exception", schema = "zjgsu", catalog = "")

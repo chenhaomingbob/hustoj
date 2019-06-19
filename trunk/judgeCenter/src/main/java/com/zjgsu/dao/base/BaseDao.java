@@ -54,6 +54,9 @@ public interface BaseDao<T> {
      */
     List<T> listByCriterion(Criterion... criterions);
 
+
+    List<T> listByCriterionAndOrder(List<Order> orders, Criterion... criterions);
+
     /**
      * QBC单表分页查询集合
      */

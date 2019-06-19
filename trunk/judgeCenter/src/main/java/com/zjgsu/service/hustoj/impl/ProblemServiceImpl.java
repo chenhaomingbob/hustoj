@@ -1,16 +1,17 @@
 package com.zjgsu.service.hustoj.impl;
 
 import com.zjgsu.dao.hustoj.ProblemDao;
-import com.zjgsu.dao.zjgsu.TestPointDao;
+import com.zjgsu.dao.hustoj.ProblemMapDao;
+import com.zjgsu.dao.zjgsu.QuestionTestPointDao;
 import com.zjgsu.entity.hustoj.ProblemEntity;
-import com.zjgsu.entity.zjgsu.TestPointEntity;
+import com.zjgsu.entity.hustoj.ProblemMapEntity;
+import com.zjgsu.entity.zjgsu.QuestionTestPointEntity;
 import com.zjgsu.service.common.CommonService;
 import com.zjgsu.service.hustoj.ProblemService;
 import com.zjgsu.util.JudgeCenterConstant;
 import com.zjgsu.util.JudgeExceptionConstant;
 import org.apache.commons.io.FileUtils;
 import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.hibernate.criterion.Criterion;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +20,6 @@ import org.springframework.stereotype.Service;
 
 import java.io.File;
 import java.io.IOException;
-import java.net.InetAddress;
 import java.nio.charset.Charset;
 import java.util.List;
 
@@ -47,20 +47,23 @@ public class ProblemServiceImpl implements ProblemService {
     }
 
     /**
-     * 创建测试点文件
+     * 在服务器上,创建测试点文件
      */
     @Override
-    public void writeTestPointsFileToJudgeDisk(int problemId) {
+    public void writeTestPointsFileToJudgeDisk(int questionId) {
+        // question为zjgsu中问题的id,problem为hustoj中问题的id.
+        ProblemMapEntity problemMapEntity = problemMapDao.getByCriterion(Restrictions.eq("questionId", questionId));
+        Integer problemId = problemMapEntity.getProblemId();
         //1.根据problemId 查询
         Criterion statusCriterion = Restrictions.eq("status", 1);
         Criterion problemCriterion = Restrictions.eq("problemId", problemId);
-        List<TestPointEntity> testPointEntityList = testPointDao.listByCriterion(statusCriterion, problemCriterion);
+        List<QuestionTestPointEntity> testPointEntityList = questionTestPointDao.listByCriterion(statusCriterion, problemCriterion);
         //2.根据数据的测试点数据，保存文件
         String problemDataFileDirPath = judgeDataLocation + problemId;
         try {
             File testFile;
             for (int i = 0; i < testPointEntityList.size(); i++) {
-                TestPointEntity testPointEntity = testPointEntityList.get(i);
+                QuestionTestPointEntity testPointEntity = testPointEntityList.get(i);
                 // input
                 String inputFilePath = generateProblemTestFileName(problemDataFileDirPath, i, 1);
                 testFile = new File(inputFilePath);
@@ -71,10 +74,10 @@ public class ProblemServiceImpl implements ProblemService {
                 testFile = new File(outputFilePath);
                 FileUtils.write(testFile, testPointEntity.getOutputContent(), Charset.forName("UTF-8"));
             }
-            Logger.info("创建测试文件,problemId:{},测试点个数:{}", problemId, testPointEntityList.size());
+            Logger.info("创建测试文件,questionId:{},problemId:{},测试点个数:{}", questionId, problemId, testPointEntityList.size());
         } catch (IOException e) {
             commonService.saveErrorRecord(JudgeExceptionConstant.EVENT_HUSTOJ_CREATE_TEST_FILE, String.format("hostIp:{},hostName:{},ProblemId:{}", HOST_IP, HOST_NAME, problemId));
-            Logger.error("创建测试文件时失败,problemId:{}", problemId, e);
+            Logger.error("创建测试文件时失败,questionId:{},problemId:{}", questionId, problemId, e);
         }
     }
 
@@ -97,7 +100,9 @@ public class ProblemServiceImpl implements ProblemService {
     }
 
     @Autowired
-    private TestPointDao testPointDao;
+    private ProblemMapDao problemMapDao;
+    @Autowired
+    private QuestionTestPointDao questionTestPointDao;
     @Autowired
     private ProblemDao problemDao;
     @Autowired

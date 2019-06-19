@@ -41,6 +41,8 @@
                 <!--在控制台显示执行的数据哭操作语句（格式）-->
                 <prop key="hibernate.format_sql">${hibernate.format_sql}</prop>
                 <prop key="use_sql_comments">${hibernate.use_sql_comments}</prop>
+                <prop key="hibernate.connection.url">jdbc:mysql://localhost:3306/jol</prop>
+                <prop key="hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</prop>
             </props>
         </property>
     </bean>
@@ -86,7 +88,19 @@
                 <!--在控制台显示执行的数据哭操作语句（格式）-->
                 <prop key="hibernate.format_sql">${hibernate.format_sql}</prop>
                 <prop key="use_sql_comments">${hibernate.use_sql_comments}</prop>
+                <prop key="hibernate.connection.url">jdbc:mysql://localhost:3306/jol</prop>
+                <prop key="hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</prop>
             </props>
+        </property>
+        <property name="annotatedClasses">
+            <list>
+                <value>com.zjgsu.entity.zjgsu.QuestionEntity</value>
+                <value>com.zjgsu.entity.zjgsu.QuestionAnswerEntity</value>
+                <value>com.zjgsu.entity.zjgsu.QuestionTestPointEntity</value>
+                <value>com.zjgsu.entity.zjgsu.UserEntity</value>
+                <value>com.zjgsu.entity.zjgsu.UserSubmitEntity</value>
+                <value>com.zjgsu.entity.zjgsu.ExceptionEntity</value>
+            </list>
         </property>
     </bean>
     <!-- 事物管理器配置  -->

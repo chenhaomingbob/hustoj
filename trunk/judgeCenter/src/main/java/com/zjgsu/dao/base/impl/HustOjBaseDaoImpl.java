@@ -98,6 +98,17 @@ public class HustOjBaseDaoImpl<T> implements BaseDao<T> {
     }
 
     @Override
+    public List<T> listByCriterionAndOrder(List<Order> orders, Criterion... criterions) {
+        Criteria criteria = this.getCriteria(criterions);
+        if (orders != null && orders.size() > 0) {
+            for (Order order : orders) {
+                criteria.addOrder(order);
+            }
+        }
+        return this.listResultByCriterion(null, null, criteria);
+    }
+
+    @Override
     public List<T> listPageByCriterion(Integer pageNum, Integer rowCount, Criterion... criterions) {
         Criteria criteria = this.getCriteria(criterions);
         return this.listResultByCriterion(pageNum, rowCount, criteria);
