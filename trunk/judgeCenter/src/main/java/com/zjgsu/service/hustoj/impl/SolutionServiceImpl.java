@@ -68,12 +68,12 @@ public class SolutionServiceImpl implements SolutionService {
         solutionEntity.setInDate(new Timestamp(System.currentTimeMillis()));
         solutionEntity.setCodeLength(sourceCode.length());
         // 14 是一个找不到solution状态定义的数
-        solutionEntity.setResult((short) 14);
+        solutionEntity.setResult(14);
         //---- 以下个属性，因为数据库的表设计的原因，给其默认值。hustoj的裁判机会自动补全上这些数据
         solutionEntity.setTime(0);
         solutionEntity.setMemory(0);
-        solutionEntity.setValid((byte) 0);
-        solutionEntity.setNum((byte) 0);
+        solutionEntity.setValid(0);
+        solutionEntity.setNum(0);
         solutionEntity.setLintError(0);
         solutionEntity.setJudger("");
         solutionEntity.setPassRate(new BigDecimal(0));
@@ -89,7 +89,8 @@ public class SolutionServiceImpl implements SolutionService {
         sourceCodeUserEntity.setSource(sourceCode);
         sourceCodeUserDao.save(sourceCodeUserEntity);
         // result 状态设置为0 ，裁判机才会轮询数据库获取到。
-        solutionEntity.setResult((short) 0);
+        solutionEntity.setResult(0);
+        solutionEntity.setStatus(0);
         solutionDao.update(solutionEntity);
         Logger.info("SolutionId:{} 已成功保存至数据库", solutionId);
         return solutionId;

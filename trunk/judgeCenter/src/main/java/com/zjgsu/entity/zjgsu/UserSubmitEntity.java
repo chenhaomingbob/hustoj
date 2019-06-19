@@ -19,6 +19,7 @@ public class UserSubmitEntity {
     private Integer status;
     private Integer language;
     private Integer solutionId;
+    private Integer questionType;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -101,23 +102,6 @@ public class UserSubmitEntity {
         this.language = language;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        UserSubmitEntity that = (UserSubmitEntity) o;
-
-        if (language != null ? !language.equals(that.language) : that.language != null) return false;
-
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        return language != null ? language.hashCode() : 0;
-    }
-
     @Basic
     @Column(name = "solution_id")
     public Integer getSolutionId() {
@@ -126,5 +110,15 @@ public class UserSubmitEntity {
 
     public void setSolutionId(Integer solutionId) {
         this.solutionId = solutionId;
+    }
+
+    @Basic
+    @Column(name = "question_type")
+    public Integer getQuestionType() {
+        return questionType;
+    }
+
+    public void setQuestionType(Integer questionType) {
+        this.questionType = questionType;
     }
 }

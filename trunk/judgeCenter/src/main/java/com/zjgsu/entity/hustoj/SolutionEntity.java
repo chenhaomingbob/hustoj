@@ -20,17 +20,18 @@ public class SolutionEntity {
      * 录入事件
      */
     private Timestamp inDate;
-    private short result;
+    private Integer result;
     private Integer language;
     private String ip;
     private Integer contestId;
-    private byte valid;
-    private byte num;
+    private Integer valid;
+    private Integer num;
     private Integer codeLength;
     private Timestamp judgetime;
     private BigDecimal passRate;
     private Integer lintError;
     private String judger;
+    private Integer status;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -95,11 +96,11 @@ public class SolutionEntity {
 
     @Basic
     @Column(name = "result")
-    public short getResult() {
+    public Integer getResult() {
         return result;
     }
 
-    public void setResult(short result) {
+    public void setResult(Integer result) {
         this.result = result;
     }
 
@@ -135,21 +136,21 @@ public class SolutionEntity {
 
     @Basic
     @Column(name = "valid")
-    public byte getValid() {
+    public Integer getValid() {
         return valid;
     }
 
-    public void setValid(byte valid) {
+    public void setValid(Integer valid) {
         this.valid = valid;
     }
 
     @Basic
     @Column(name = "num")
-    public byte getNum() {
+    public Integer getNum() {
         return num;
     }
 
-    public void setNum(byte num) {
+    public void setNum(Integer num) {
         this.num = num;
     }
 
@@ -201,5 +202,32 @@ public class SolutionEntity {
 
     public void setJudger(String judger) {
         this.judger = judger;
+    }
+
+    @Basic
+    @Column(name = "status")
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        SolutionEntity that = (SolutionEntity) o;
+
+        if (status != null ? !status.equals(that.status) : that.status != null) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        return status != null ? status.hashCode() : 0;
     }
 }

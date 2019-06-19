@@ -73,4 +73,13 @@ public class JudgeCenterConstant {
      */
     public static final int USER_SUBMIT_STATUS_FINISHED=1;
 
+    /**
+     * tongguo
+     */
+    public static final int SOLUTION_RESULT_AC=4;
+    /**
+     * complie error
+     */
+    public static final int SOLUTION_RESULT_CE=11;
+
 }

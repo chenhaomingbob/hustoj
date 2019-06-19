@@ -1,11 +1,19 @@
 package com.zjgsu.service.hustoj.impl;
 
+import com.zjgsu.dao.zjgsu.QuestionTestPointDao;
+import com.zjgsu.entity.zjgsu.QuestionTestPointEntity;
 import com.zjgsu.service.hustoj.SolutionService;
+import org.hibernate.criterion.Criterion;
+import org.hibernate.criterion.Order;
+import org.hibernate.criterion.Restrictions;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -37,5 +45,19 @@ public class SolutionServiceImplTest {
 
         }
 
+    }
+    @Autowired
+    private QuestionTestPointDao questionTestPointDao;
+
+    @Test
+    public void test333() {
+        List<Order> orders=new ArrayList<>();
+        Order order = Order.asc("testPointId");
+        orders.add(order);
+        Criterion criterion = Restrictions.eq("questionId",1000);
+        List<QuestionTestPointEntity> questionTestPointEntityList = questionTestPointDao.listByCriterionAndOrder(orders, criterion);
+        for (QuestionTestPointEntity questionTestPointEntity : questionTestPointEntityList) {
+            System.out.println(questionTestPointEntity.getTestPointId());
+        }
     }
 }

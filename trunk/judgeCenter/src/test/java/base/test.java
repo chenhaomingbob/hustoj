@@ -1,9 +1,17 @@
 package base;
 
 import com.alibaba.fastjson.JSON;
+import com.zjgsu.dao.hustoj.SolutionTestPointsDao;
+import com.zjgsu.dao.zjgsu.QuestionTestPointDao;
 import com.zjgsu.dto.AnswerDTO;
 import com.zjgsu.dto.UserReplyListDTO;
+import com.zjgsu.entity.hustoj.SolutionTestPointsEntity;
+import com.zjgsu.entity.zjgsu.QuestionTestPointEntity;
+import org.hibernate.criterion.Criterion;
+import org.hibernate.criterion.Order;
+import org.hibernate.criterion.Restrictions;
 import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -60,4 +68,13 @@ public class test {
             System.out.println(answerDTO.getNumber()+";"+answerDTO.getAnswer());
         }
     }
+
+    @Test
+    public void test33() {
+        String test = "/home/judge/data/1000/testPoint#1.in";
+
+        int i = test.lastIndexOf(".");
+        System.out.println(test.substring(i-1,i));
+    }
+
 }

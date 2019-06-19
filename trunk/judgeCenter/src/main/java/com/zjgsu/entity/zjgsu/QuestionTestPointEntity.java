@@ -10,7 +10,7 @@ import java.sql.Timestamp;
 @Entity
 @Table(name = "question_test_point", schema = "zjgsu", catalog = "")
 public class QuestionTestPointEntity {
-    private Integer testPonitId;
+    private Integer testPointId;
     private Integer questionId;
     private String inputContent;
     private String outputContent;
@@ -20,13 +20,13 @@ public class QuestionTestPointEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "test_ponit_id")
-    public Integer getTestPonitId() {
-        return testPonitId;
+    @Column(name = "test_point_id")
+    public Integer getTestPointId() {
+        return testPointId;
     }
 
-    public void setTestPonitId(Integer testPonitId) {
-        this.testPonitId = testPonitId;
+    public void setTestPointId(Integer testPonitId) {
+        this.testPointId = testPonitId;
     }
 
     @Basic
