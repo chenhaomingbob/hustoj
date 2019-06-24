@@ -36,7 +36,7 @@ public class test {
                 "    printf(\"%d\\n\",a+b); \n" +
                 "    return 0; \n" +
                 "} ";
-        System.out.println(code.length());
+        System.out.println(code);
     }
 
     @Test

@@ -38,10 +38,10 @@ public class runTest {
     }
     @Test
     public void test1() throws IOException {
-        String filePath = "/home/judge/test.in";
-        File file = new File(filePath);
+//        String filePath = "/home/judge/test.in";
+//        File file = new File(filePath);
 //        SourceCodeEntity sourceCodeEntity = sourceCodeDao.getByCriterion(Restrictions.eq("solutionId", 1031));
-        FileUtils.write(file,"123", Charset.forName("UTF-8"));
+//        FileUtils.write(file,"123", Charset.forName("UTF-8"));
     }
 
     @Test

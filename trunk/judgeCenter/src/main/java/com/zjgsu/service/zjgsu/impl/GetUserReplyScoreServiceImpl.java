@@ -18,6 +18,7 @@ import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,31 +31,20 @@ import static com.zjgsu.util.JudgeCenterConstant.*;
  * @author chm 神魔法
  * @date 2019/6/4 14:01
  */
-//TODO
 @Service
 public class GetUserReplyScoreServiceImpl implements GetUserReplyScoreService {
-
     /**
      * 根据提交的id获取得分
      *
      * @param submitId
      */
+    @Override
     public UserScoreDTO getScoreByReplyId(int submitId) {
-        Criterion criStatus = Restrictions.eq("status",DATABASE_RECORD_STATUS_RAW);
-        Order order = Order.asc("");
-        userSubmitDao.listByCriterion();
         UserSubmitEntity userSubmitEntity = userSubmitDao.getByCriterion(Restrictions.eq("submitId", submitId));
-        QuestionEntity questionEntity = questionDao.getByCriterion(Restrictions.eq("questionId", userSubmitEntity.getQuestionId()));
-        Integer type = questionEntity.getType();
         UserScoreDTO userScoreDTO = new UserScoreDTO();
-        if (type.equals(QUESTION_TYPE_NORMAL_FILL) || type.equals(QUESTION_TYPE_CHOICE) || type.equals(QUESTION_TYPE_JUDGMENT)) {
-            //不是编程题
-            userScoreDTO.setScore(userSubmitEntity.getResult());
-            userScoreDTO.setCreatedTime(userSubmitEntity.getCreatedTime());
-            userScoreDTO.setStatus(userSubmitEntity.getStatus());
-        } else {
-            //是编程题
-        }
+        userScoreDTO.setScore(userSubmitEntity.getResult());
+        userScoreDTO.setCreatedTime(userSubmitEntity.getCreatedTime());
+        userScoreDTO.setStatus(userSubmitEntity.getStatus());
         return userScoreDTO;
     }
 

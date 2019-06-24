@@ -73,6 +73,10 @@ public class JudgeCenterConstant {
     public static final int QUESTION_TYPE_PROGRAM=6;
 
     /**
+     * 用户提交初始状态
+     */
+    public static final int USER_SUBMIT_STATUS_INITIAL=1;
+    /**
      * 用户提交已被评判
      */
     public static final int USER_SUBMIT_STATUS_FINISHED=2;
@@ -92,7 +96,7 @@ public class JudgeCenterConstant {
     /**
      * hustoj solution initial
      */
-    public static final int SOLUTION_STATUS_INITAL=0;
+    public static final int SOLUTION_STATUS_INITIAL=0;
     /**
      * hustoj solution finished
      */

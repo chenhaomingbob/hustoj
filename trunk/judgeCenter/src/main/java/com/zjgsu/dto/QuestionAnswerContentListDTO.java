@@ -8,6 +8,7 @@ import java.util.List;
  * @date 19-6-19 下午2:23
  */
 public class QuestionAnswerContentListDTO implements Serializable {
+    private static final long serialVersionUID = -4360815736170230300L;
     List<AnswerDTO> questionAnswerList;
 
     public List<AnswerDTO> getQuestionAnswerList() {

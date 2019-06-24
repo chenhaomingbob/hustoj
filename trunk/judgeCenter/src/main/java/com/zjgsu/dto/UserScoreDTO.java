@@ -8,6 +8,7 @@ import java.sql.Timestamp;
  * @date 19-6-19 下午3:35
  */
 public class UserScoreDTO implements Serializable {
+    private static final long serialVersionUID = -5587848277098719251L;
     private Integer userId;
     private Integer submitId;
     private Integer score;

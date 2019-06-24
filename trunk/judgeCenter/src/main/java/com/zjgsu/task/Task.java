@@ -16,8 +16,7 @@ import org.springframework.stereotype.Component;
 import java.util.Date;
 import java.util.List;
 
-import static com.zjgsu.util.JudgeCenterConstant.SOLUTION_STATUS_FINISHED;
-import static com.zjgsu.util.JudgeCenterConstant.SOLUTION_STATUS_INITAL;
+import static com.zjgsu.util.JudgeCenterConstant.*;
 
 /**
  * @author chm 神魔法
@@ -27,7 +26,7 @@ import static com.zjgsu.util.JudgeCenterConstant.SOLUTION_STATUS_INITAL;
 public class Task {
     @Scheduled(fixedDelay = 1000)//(cron = "seconds minutes hours dayofmonth month dayofweek")
     public void startSecKill(){
-        Criterion criStatus = Restrictions.eq("status",SOLUTION_STATUS_INITAL);
+        Criterion criStatus = Restrictions.eq("status",SOLUTION_STATUS_INITIAL);
         Criterion criterion1 = Restrictions.between("result", 4, 20);
         List<SolutionEntity> solutionEntityList = solutionDao.listPageByCriterion(1, 20,criterion1,criStatus);
         if (solutionEntityList == null) {
@@ -37,6 +36,7 @@ public class Task {
         for (SolutionEntity solutionEntity : solutionEntityList) {
             Criterion criSolutionId = Restrictions.eq("solutionId",solutionEntity.getSolutionId());
             UserSubmitEntity userSubmitEntity = userSubmitDao.getByCriterion(criSolutionId);
+            
             getUserReplyScoreService.updateProgramInfo(solutionEntity,userSubmitEntity);
             solutionEntity.setStatus(SOLUTION_STATUS_FINISHED);
             solutionDao.update(solutionEntity);

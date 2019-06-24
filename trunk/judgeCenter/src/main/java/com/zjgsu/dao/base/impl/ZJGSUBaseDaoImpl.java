@@ -21,7 +21,7 @@ import org.springframework.transaction.annotation.Transactional;
  * @param <T>
  */
 @SuppressWarnings({"rawtypes", "unchecked"})
-@Transactional
+@Transactional(value = "transactionManagerZJGSU")
 public class ZJGSUBaseDaoImpl<T> implements BaseDao<T> {
     /**
      * hql ： from 后面跟的 类名＋类对象 where 后 用 对象的属性做条件

@@ -7,6 +7,7 @@ import java.io.Serializable;
  * @date 19-6-19 下午2:05
  */
 public class AnswerDTO implements Serializable{
+    private static final long serialVersionUID = -6307463438756376655L;
     private String answer;
     private Integer number;
 

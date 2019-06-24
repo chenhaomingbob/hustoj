@@ -1,7 +1,9 @@
 package com.zjgsu.service.hustoj.impl;
 
+import com.alibaba.fastjson.JSONObject;
 import com.zjgsu.dao.zjgsu.UserSubmitDao;
 import com.zjgsu.entity.zjgsu.UserSubmitEntity;
+import com.zjgsu.service.common.TestService;
 import com.zjgsu.service.hustoj.SolutionService;
 import org.apache.logging.log4j.LogManager;
 import org.junit.Test;
@@ -13,8 +15,10 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 @RunWith(value = SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"file:src/main/webapp/WEB-INF/applicationContext-conf.xml"})
 public class SubmitTest {
+
+
     @Test
-    public void UserSubmitNoramlFillTest() {
+    public void UserSubmitNormalFillTest() {
         String userAnswer="{\"userReplyList\":[{\"answer\":\"ab\",\"number\":1},{\"answer\":\"ba\",\"number\":2}]}";
         UserSubmitEntity userSubmitEntity = new UserSubmitEntity();
         userSubmitEntity.setUserId(1);
