@@ -21,6 +21,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 import static com.zjgsu.util.JudgeCenterConstant.USER_SUBMIT_STATUS_FINISHED;
+import static com.zjgsu.util.JudgeCenterConstant.USER_SUBMIT_STATUS_RATED;
 
 /**
  * 用来判断一般题目 ：填空题、选择题、判断题.
@@ -48,7 +49,7 @@ public class JudgeNormalQuestionServiceImpl implements JudgeNormalQuestionServic
             }
         }
         userSubmitEntity.setResult(result);
-        userSubmitEntity.setStatus(USER_SUBMIT_STATUS_FINISHED);
+        userSubmitEntity.setStatus(USER_SUBMIT_STATUS_RATED);
         userSubmitDao.update(userSubmitEntity);
 
     }
@@ -102,7 +103,7 @@ public class JudgeNormalQuestionServiceImpl implements JudgeNormalQuestionServic
             result = questionAnswerEntity.getSocre();
         }
         userSubmitEntity.setResult(result);
-        userSubmitEntity.setStatus(USER_SUBMIT_STATUS_FINISHED);
+        userSubmitEntity.setStatus(USER_SUBMIT_STATUS_RATED);
         userSubmitDao.update(userSubmitEntity);
     }
 

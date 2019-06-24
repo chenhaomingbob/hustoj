@@ -22,6 +22,11 @@ import java.util.List;
  */
 public class test {
     @Test
+    public void test111() {
+        List<Integer> integerList;
+
+    }
+    @Test
     public void test1() {
         String code = "#include <stdio.h> \n" +
                 "int main() \n" +

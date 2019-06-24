@@ -96,9 +96,6 @@ public class SolutionServiceImpl implements SolutionService {
         return solutionId;
     }
 
-
-    @Autowired
-    private QuestionTestPointDao questionTestPointDao;
     @Autowired
     private SourceCodeDao sourceCodeDao;
     @Autowired

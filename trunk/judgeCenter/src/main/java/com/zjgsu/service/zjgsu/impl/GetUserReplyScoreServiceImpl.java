@@ -40,6 +40,7 @@ public class GetUserReplyScoreServiceImpl implements GetUserReplyScoreService {
      * @param submitId
      */
     public UserScoreDTO getScoreByReplyId(int submitId) {
+        Criterion criStatus = Restrictions.eq("status",DATABASE_RECORD_STATUS_RAW);
         Order order = Order.asc("");
         userSubmitDao.listByCriterion();
         UserSubmitEntity userSubmitEntity = userSubmitDao.getByCriterion(Restrictions.eq("submitId", submitId));
@@ -59,7 +60,10 @@ public class GetUserReplyScoreServiceImpl implements GetUserReplyScoreService {
 
     @Override
     public void updateProgramInfo(SolutionEntity solutionEntity, UserSubmitEntity userSubmitEntity) {
-        Integer questionType = userSubmitEntity.getQuestionType();
+        Criterion criStatus = Restrictions.eq("status",DATABASE_RECORD_STATUS_RAW);
+        Criterion criterion = Restrictions.eq("questionId", userSubmitEntity.getQuestionId());
+        QuestionEntity questionEntity = questionDao.getByCriterion(criterion,criStatus);
+        Integer questionType = questionEntity.getType();
         if (questionType.equals(QUESTION_TYPE_PROGRAM_FILL)) {
             this.updateProgramFillSubmit(solutionEntity, userSubmitEntity);
         } else if (questionType.equals(QUESTION_TYPE_PROGRAM_CORRECTION)) {
@@ -78,22 +82,22 @@ public class GetUserReplyScoreServiceImpl implements GetUserReplyScoreService {
     }
 
     private void updateProgramSubmit(SolutionEntity solutionEntity, UserSubmitEntity userSubmitEntity) {
+        Criterion criStatus = Restrictions.eq("status",DATABASE_RECORD_STATUS_RAW);
         int result = 0;
-        Criterion criQuestionId = Restrictions.eq("questionId", userSubmitEntity.getQuestionId());
         if (solutionEntity.getResult() == SOLUTION_RESULT_AC) {
             result = 100;
         } else if (solutionEntity.getResult() != SOLUTION_RESULT_CE) {
             // 不是编译错误
             Criterion criSolutionId = Restrictions.eq("solutionId", solutionEntity.getSolutionId());
-            List<SolutionTestPointsEntity> solutionTestPointsEntityList = solutionTestPointsDao.listByCriterion(criSolutionId);
+            List<SolutionTestPointsEntity> solutionTestPointsEntityList = solutionTestPointsDao.listByCriterion(criSolutionId,criStatus);
             // questionTestPoints
             List<Order> orders = new ArrayList<>();
             Order order = Order.asc("testPointId");
             orders.add(order);
-            Criterion criterion = Restrictions.eq("questionId", 1000);
+            Criterion criterion = Restrictions.eq("questionId", userSubmitEntity.getQuestionId());
             List<QuestionTestPointEntity> questionTestPointEntityList = questionTestPointDao.listByCriterionAndOrder(orders, criterion);
             for (SolutionTestPointsEntity solutionTestPointsEntity : solutionTestPointsEntityList) {
-                if (solutionTestPointsEntity.getTestPointResult().equals(4)) {
+                if (solutionTestPointsEntity.getTestPointResult().equals(SOLUTION_RESULT_AC)) {
                     String testPointInputFile = solutionTestPointsEntity.getTestPointInputFile();
                     int i = testPointInputFile.lastIndexOf(".");
                     QuestionTestPointEntity questionTestPointEntity = questionTestPointEntityList.get(i);
@@ -102,8 +106,8 @@ public class GetUserReplyScoreServiceImpl implements GetUserReplyScoreService {
             }
         }
         userSubmitEntity.setResult(result);
+        userSubmitEntity.setStatus(USER_SUBMIT_STATUS_RATED);
         userSubmitDao.update(userSubmitEntity);
-
     }
 
     @Autowired

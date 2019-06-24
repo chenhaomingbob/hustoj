@@ -27,11 +27,11 @@ public class SolutionServiceImplTest {
     private SolutionService solutionService;
 
     @Test
-    public void testSubmitUserSolution() {
+    public void testSolution() {
         int problemId = 1000;
         String userId = "admin";
         String ip = "192.168.3.1";
-        int language = 1;
+        int language = 0;
         String sourceCode = "#include <stdio.h> \n" +
                 "int main() \n" +
                 "{ \n" +
@@ -42,9 +42,7 @@ public class SolutionServiceImplTest {
                 "} ";
         for (int i = 0; i < 8; i++) {
             solutionService.submitUserSolution(problemId, userId, ip, language, sourceCode);
-
         }
-
     }
     @Autowired
     private QuestionTestPointDao questionTestPointDao;

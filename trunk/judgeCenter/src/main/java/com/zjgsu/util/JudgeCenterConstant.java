@@ -6,6 +6,10 @@ package com.zjgsu.util;
  */
 public class JudgeCenterConstant {
     /**
+     * 数据库记录初始的状态
+     */
+    public static int DATABASE_RECORD_STATUS_RAW=1;
+    /**
      * ip
      */
     public static String HOST_IP = null;
@@ -71,8 +75,11 @@ public class JudgeCenterConstant {
     /**
      * 用户提交已被评判
      */
-    public static final int USER_SUBMIT_STATUS_FINISHED=1;
-
+    public static final int USER_SUBMIT_STATUS_FINISHED=2;
+    /**
+     * 用户提交已经有分数
+     */
+    public static final int USER_SUBMIT_STATUS_RATED=3;
     /**
      * tongguo
      */
@@ -81,5 +88,14 @@ public class JudgeCenterConstant {
      * complie error
      */
     public static final int SOLUTION_RESULT_CE=11;
+
+    /**
+     * hustoj solution initial
+     */
+    public static final int SOLUTION_STATUS_INITAL=0;
+    /**
+     * hustoj solution finished
+     */
+    public static final int SOLUTION_STATUS_FINISHED=1;
 
 }

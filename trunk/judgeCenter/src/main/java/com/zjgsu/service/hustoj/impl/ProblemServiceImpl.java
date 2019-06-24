@@ -8,6 +8,7 @@ import com.zjgsu.entity.hustoj.ProblemMapEntity;
 import com.zjgsu.entity.zjgsu.QuestionTestPointEntity;
 import com.zjgsu.service.common.CommonService;
 import com.zjgsu.service.hustoj.ProblemService;
+import com.zjgsu.service.hustoj.SolutionService;
 import com.zjgsu.util.JudgeCenterConstant;
 import com.zjgsu.util.JudgeExceptionConstant;
 import org.apache.commons.io.FileUtils;
@@ -23,8 +24,7 @@ import java.io.IOException;
 import java.nio.charset.Charset;
 import java.util.List;
 
-import static com.zjgsu.util.JudgeCenterConstant.HOST_IP;
-import static com.zjgsu.util.JudgeCenterConstant.HOST_NAME;
+import static com.zjgsu.util.JudgeCenterConstant.*;
 
 /**
  * @author chm 神魔法
@@ -55,7 +55,7 @@ public class ProblemServiceImpl implements ProblemService {
         ProblemMapEntity problemMapEntity = problemMapDao.getByCriterion(Restrictions.eq("questionId", questionId));
         Integer problemId = problemMapEntity.getProblemId();
         //1.根据problemId 查询
-        Criterion statusCriterion = Restrictions.eq("status", 1);
+        Criterion statusCriterion = Restrictions.eq("status", DATABASE_RECORD_STATUS_RAW);
         Criterion problemCriterion = Restrictions.eq("problemId", problemId);
         List<QuestionTestPointEntity> testPointEntityList = questionTestPointDao.listByCriterion(statusCriterion, problemCriterion);
         //2.根据数据的测试点数据，保存文件
@@ -98,6 +98,7 @@ public class ProblemServiceImpl implements ProblemService {
 
         return stringBuilder.toString();
     }
+
 
     @Autowired
     private ProblemMapDao problemMapDao;

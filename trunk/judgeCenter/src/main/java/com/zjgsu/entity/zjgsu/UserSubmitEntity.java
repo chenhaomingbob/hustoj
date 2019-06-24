@@ -19,7 +19,7 @@ public class UserSubmitEntity {
     private Integer status;
     private Integer language;
     private Integer solutionId;
-    private Integer questionType;
+    private String sourceCode;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -113,12 +113,29 @@ public class UserSubmitEntity {
     }
 
     @Basic
-    @Column(name = "question_type")
-    public Integer getQuestionType() {
-        return questionType;
+    @Column(name = "source_code")
+    public String getSourceCode() {
+        return sourceCode;
     }
 
-    public void setQuestionType(Integer questionType) {
-        this.questionType = questionType;
+    public void setSourceCode(String sourceCode) {
+        this.sourceCode = sourceCode;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        UserSubmitEntity that = (UserSubmitEntity) o;
+
+        if (sourceCode != null ? !sourceCode.equals(that.sourceCode) : that.sourceCode != null) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        return sourceCode != null ? sourceCode.hashCode() : 0;
     }
 }

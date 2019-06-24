@@ -40,11 +40,11 @@ public class JudgeServiceImpl implements JudgeService {
             judgeNormalQuestionService.judgeChoiceQuestion(questionEntity, userSubmitEntity);
         } else if (questionType.equals(QUESTION_TYPE_JUDGMENT)) {
             judgeNormalQuestionService.judgeJudgmentQuestion(questionEntity, userSubmitEntity);
-        } else if (questionEntity.equals(QUESTION_TYPE_PROGRAM_FILL)) {
+        } else if (questionType.equals(QUESTION_TYPE_PROGRAM_FILL)) {
             judgeProgramQuestionService.judgeProgramFillQuestion(questionEntity, userSubmitEntity);
-        } else if (questionEntity.equals(QUESTION_TYPE_PROGRAM_CORRECTION)) {
+        } else if (questionType.equals(QUESTION_TYPE_PROGRAM_CORRECTION)) {
             judgeProgramQuestionService.judgeCorrectionQuestion(questionEntity, userSubmitEntity);
-        } else if (questionEntity.equals(QUESTION_TYPE_PROGRAM)) {
+        } else if (questionType.equals(QUESTION_TYPE_PROGRAM)) {
             judgeProgramQuestionService.judgeProgramQuestion(questionEntity, userSubmitEntity);
         }
     }

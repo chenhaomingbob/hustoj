@@ -48,7 +48,7 @@ public class JudgeProgramQuestionServiceImpl implements JudgeProgramQuestionServ
     public void judgeProgramQuestion(QuestionEntity questionEntity, UserSubmitEntity userSubmitEntity) {
         String userId = "hi";
         int language = userSubmitEntity.getLanguage();
-        String sourceCode = userSubmitEntity.getUserAnswer();
+        String sourceCode = userSubmitEntity.getSourceCode();
         ProblemMapEntity problemMapEntity = problemMapDao.getByCriterion(Restrictions.eq("questionId", questionEntity.getQuestionId()));
         int solutionId = solutionService.submitUserSolution(problemMapEntity.getProblemId(), userId, HOST_IP, language, sourceCode);
         userSubmitEntity.setSolutionId(solutionId);
