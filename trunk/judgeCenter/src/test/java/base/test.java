@@ -21,10 +21,10 @@ import java.util.List;
  * @date 2019/6/1 18:21
  */
 public class test {
+
     @Test
     public void test111() {
         List<Integer> integerList;
-
     }
     @Test
     public void test1() {

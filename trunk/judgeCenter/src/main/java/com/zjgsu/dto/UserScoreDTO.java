@@ -15,7 +15,6 @@ public class UserScoreDTO implements Serializable {
     private Timestamp createdTime;
     private Integer status;
 
-
     public Integer getUserId() {
         return userId;
     }

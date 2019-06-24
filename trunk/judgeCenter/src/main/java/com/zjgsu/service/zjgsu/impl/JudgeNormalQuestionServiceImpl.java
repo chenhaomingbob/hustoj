@@ -20,7 +20,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-import static com.zjgsu.util.JudgeCenterConstant.USER_SUBMIT_STATUS_FINISHED;
 import static com.zjgsu.util.JudgeCenterConstant.USER_SUBMIT_STATUS_RATED;
 
 /**

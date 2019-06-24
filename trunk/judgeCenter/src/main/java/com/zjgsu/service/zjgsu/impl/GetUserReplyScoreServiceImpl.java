@@ -48,6 +48,11 @@ public class GetUserReplyScoreServiceImpl implements GetUserReplyScoreService {
         return userScoreDTO;
     }
 
+    /**
+     * 把已经完成评判的提交，进行更新。
+     * @param solutionEntity
+     * @param userSubmitEntity
+     */
     @Override
     public void updateProgramInfo(SolutionEntity solutionEntity, UserSubmitEntity userSubmitEntity) {
         Criterion criStatus = Restrictions.eq("status",DATABASE_RECORD_STATUS_RAW);

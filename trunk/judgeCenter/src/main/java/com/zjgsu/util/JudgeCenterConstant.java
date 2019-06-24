@@ -77,9 +77,9 @@ public class JudgeCenterConstant {
      */
     public static final int USER_SUBMIT_STATUS_INITIAL=1;
     /**
-     * 用户提交已被评判
+     * 用户提交已被知晓
      */
-    public static final int USER_SUBMIT_STATUS_FINISHED=2;
+    public static final int USER_SUBMIT_STATUS_KNOW=2;
     /**
      * 用户提交已经有分数
      */

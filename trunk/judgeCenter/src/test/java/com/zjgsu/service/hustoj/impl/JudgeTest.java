@@ -36,6 +36,19 @@ public class JudgeTest {
     }
 
 
+    @Test
+    public void test1() {
+        Criterion criterion = Restrictions.eq("submitId",28);
+        UserSubmitEntity userSubmitEntity = userSubmitDao.getByCriterion(criterion);
+        Logger.info(userSubmitEntity.getSourceCode());
+        Criterion criterion1 = Restrictions.eq("submitId", 15);
+        UserSubmitEntity userSubmitEntity1 = userSubmitDao.getByCriterion(criterion1);
+        Logger.info(userSubmitEntity1.getSourceCode());
+
+    }
+
+
+
     @Autowired
     private UserSubmitDao userSubmitDao;
 

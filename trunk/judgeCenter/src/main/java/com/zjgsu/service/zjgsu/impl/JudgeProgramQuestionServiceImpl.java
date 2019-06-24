@@ -14,7 +14,7 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import static com.zjgsu.util.JudgeCenterConstant.USER_SUBMIT_STATUS_FINISHED;
+import static com.zjgsu.util.JudgeCenterConstant.USER_SUBMIT_STATUS_KNOW;
 
 /**
  * @author chm 神魔法
@@ -52,7 +52,7 @@ public class JudgeProgramQuestionServiceImpl implements JudgeProgramQuestionServ
         ProblemMapEntity problemMapEntity = problemMapDao.getByCriterion(Restrictions.eq("questionId", questionEntity.getQuestionId()));
         int solutionId = solutionService.submitUserSolution(problemMapEntity.getProblemId(), userId, HOST_IP, language, sourceCode);
         userSubmitEntity.setSolutionId(solutionId);
-        userSubmitEntity.setStatus(USER_SUBMIT_STATUS_FINISHED);
+        userSubmitEntity.setStatus(USER_SUBMIT_STATUS_KNOW);
         userSubmitDao.update(userSubmitEntity);
     }
 
